@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class LocomotionController : MonoBehaviour
 {
-    //IN general, we are borrowing how we structure the code from ThirdPersonCharacter.cs
-    //from the standards assets :^ )
+    //IN general, we are borrowing how we structure the code from ThirdPersonCharacter.cs from the standards assets :^ )
+    //We also looked at the code for CharacterController.Move() in the Unity Documentation
 
     //these variables we want accessible in the unity editor
     public float speed = 3.0f;
@@ -33,9 +33,9 @@ public class LocomotionController : MonoBehaviour
         //are we ready to jump?
         if (jump && controller.isGrounded)
         {
-        
-            Debug.Log("jump");
             moveDirection.y = maxJumpVel;
+
+            //Below is attempts at making jump smooth~
             //controller.transform.position = Vector3.Lerp(controller.transform.position, new Vector3 (moveDirection.x, 0f, moveDirection.z), Time.time);
             /*if (controller.velocity.y < maxJumpVel)
             {

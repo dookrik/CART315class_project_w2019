@@ -7,7 +7,6 @@ public class LocomotionUserControl : MonoBehaviour
     private LocomotionController playerBody; //reference to the object currently in players control
     private Vector3 direction;              
     private bool jump;
-    private bool inAir;
 
     // Start is called before the first frame update
     void Start()
