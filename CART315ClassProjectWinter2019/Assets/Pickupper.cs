@@ -113,4 +113,9 @@ public class Pickupper : MonoBehaviour
     {
         buttonCheck();
     }
+
+    public bool IsHoldingObject()
+    {
+        return isHolding;
+    }
 }
