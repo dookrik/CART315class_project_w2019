@@ -28,7 +28,7 @@ public class Become : MonoBehaviour
                 Become clickedObject = Instantiate(this, hit.collider.gameObject.transform.position, Quaternion.identity);
                 //change the name of that camera to avoid (clone) being added every single time
                 clickedObject.gameObject.name = "Camera_Become";
-                //make the camera a chid of the clicked game object to center its postion relative to the player
+                //make the camera a chid of the clicked game object to center its position relative to the player
                 clickedObject.transform.SetParent(hit.collider.gameObject.transform);
                 clickedObject.transform.localRotation = Quaternion.Euler(0, 0, 0);
                 //Destroy the old camera.
