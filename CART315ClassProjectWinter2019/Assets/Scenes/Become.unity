@@ -240,7 +240,7 @@ MonoBehaviour:
   maxJumpVel: 4
   jumpAccel: 2
   gravity: 2
-  controller: {fileID: 0}
+  controller: {fileID: 750741480}
 --- !u!114 &750741482
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -675,7 +675,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1975754057}
   m_LocalRotation: {x: 0, y: 0.2840153, z: 0, w: 0.95881975}
-  m_LocalPosition: {x: -3.88, y: 1.57, z: -4.2}
+  m_LocalPosition: {x: -3.45, y: 1.57, z: -3.48}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6985198535408090203}
@@ -716,7 +716,7 @@ MonoBehaviour:
   maxJumpVel: 4
   jumpAccel: 2
   gravity: 2
-  controller: {fileID: 0}
+  controller: {fileID: 1975754062}
 --- !u!114 &1975754064
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -816,13 +816,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2006910827}
-  m_LocalRotation: {x: 0, y: -0.7349146, z: 0, w: 0.67815965}
-  m_LocalPosition: {x: 3.9, y: 4.48, z: -0.36}
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 3.17, y: 4.48, z: -0.36}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: -94.6, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!143 &2006910832
 CharacterController:
   m_ObjectHideFlags: 0
@@ -857,7 +857,7 @@ MonoBehaviour:
   maxJumpVel: 4
   jumpAccel: 2
   gravity: 2
-  controller: {fileID: 0}
+  controller: {fileID: 2006910832}
 --- !u!114 &2006910834
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -865,7 +865,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2006910827}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8bb83b78d84df4dde889eb9c7c0c4cc4, type: 3}
   m_Name: 
@@ -936,6 +936,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3421414941480868065, guid: ca149fc2b988146269ce0116661be5bb,
+        type: 3}
+      propertyPath: field of view
+      value: 60
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ca149fc2b988146269ce0116661be5bb, type: 3}
