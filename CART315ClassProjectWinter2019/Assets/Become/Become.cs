@@ -9,10 +9,17 @@ public class Become : MonoBehaviour
     private float clickRange = 100f;
     private float t = 0.0f;
 
+    //sounds
+    public AudioClip swapSound;
+    private AudioSource audioSource;
+
     void Start()
     {
         fpsCam = GetComponent<Camera>();
         fpsCam.fieldOfView = 60;
+
+        //getting the audio sound component
+        audioSource = GetComponent<AudioSource>();
     }
     //we want to update every frame
     void Update()
@@ -46,6 +53,9 @@ public class Become : MonoBehaviour
         yield return new WaitForSeconds(waitTime);
         //code executes after the waitTime is elapsed 
         SwitchCameras();
+
+        //play the sound fx when swithing
+        PlaySoundFx();
     }
    
 
@@ -71,6 +81,14 @@ public class Become : MonoBehaviour
 
         //Destroy the old camera.
         Destroy(gameObject);
+    }
+
+    private void PlaySoundFx()
+    {
+        //selecting the sound clip
+        audioSource.clip = swapSound;
+        //playing the sound clip
+        audioSource.Play();
     }
 
 }
