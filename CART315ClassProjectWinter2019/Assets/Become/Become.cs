@@ -10,7 +10,7 @@ public class Become : MonoBehaviour
     private float t = 0.0f;
 
     //sounds
-    public AudioClip swapSound;
+    private AudioClip swapSound;
     private AudioSource audioSource;
 
     void Start()
@@ -88,12 +88,19 @@ public class Become : MonoBehaviour
 
     private void setAudioSource()
     {
+
+        //load the sound clip from the Resources folder in the asset
+        swapSound = Resources.Load<AudioClip>("Sounds/Swap_sound");
+
+        //checks for empty audio source component
         if (GetComponent<AudioSource>() == null)
         {
+            //add audio component
             audioSource = gameObject.AddComponent<AudioSource>() as AudioSource;
         }
         else
         {
+            //get audio component
             audioSource = GetComponent<AudioSource>();
         }
     }
