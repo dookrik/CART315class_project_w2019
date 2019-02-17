@@ -4,44 +4,64 @@ using UnityEngine;
 
 public class Throw : MonoBehaviour
 {
+    //This script requires a Pickupper to work. 
 
+    public float maxForce = 10;
+    public float throwDistance = 10;
+    private AudioSource throwSound;
 
-    //Check if IsHoldingObject()
-    //Check held object HeldObject()
-    //button fire and apply force Pickupper.Button Check
-    //
-
-    Pickupper pickupper = new Pickupper();
+    Pickupper pickupper;
     GameObject heldObject;
-    private bool toss;
 
     // Start is called before the first frame update
     void Start()
     {
         pickupper = GetComponent<Pickupper>();
+        throwSound = GetComponent<AudioSource>();
     }
 
-    // Update is called once per frame
-    void Update()
+    //Call this for player throw. This will throw the object where the player is facing.
+    public void ThrowObject()
     {
-
         if (pickupper.IsHoldingObject())
         {
             heldObject = pickupper.HeldObject();
-            if (Input.GetButtonDown("Throw")){
-                pickupper.ButtonCheck();
-                //apply force here
-                print("throw");
-                heldObject = null;
-            }
+            var throwRb = heldObject.GetComponent<Rigidbody>();
+            pickupper.ButtonCheck();
+            var vel = Projectile.GetProjectileVelocity(maxForce, throwDistance, transform.up, transform.forward);
+            throwRb.AddForce(vel, ForceMode.VelocityChange);
+            throwSound.Play();
+            heldObject = null;
         }
         else
         {
             heldObject = null;
         }
-
-        
     }
 
+    //Call this for NPC throw. Add the player as target.
+    public void ThrowObject(Transform target)
+    {
+        float distance = Vector3.Distance(transform.position, target.position);
 
+        Vector3 heading = target.position - transform.position;
+        Vector3 direction = heading / heading.magnitude;
+
+        if (pickupper.IsHoldingObject())
+        {
+            heldObject = pickupper.HeldObject();
+            var throwRb = heldObject.GetComponent<Rigidbody>();
+            pickupper.ButtonCheck();
+            var vel = Projectile.GetProjectileVelocity(maxForce, distance, transform.up, direction);
+            throwRb.AddForce(vel, ForceMode.VelocityChange);
+            throwSound.Play();
+            heldObject = null;
+        }
+        else
+        {
+            heldObject = null;
+        }
+    }
+
+  
 }
