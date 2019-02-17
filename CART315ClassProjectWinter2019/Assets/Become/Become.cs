@@ -18,8 +18,8 @@ public class Become : MonoBehaviour
         fpsCam = GetComponent<Camera>();
         fpsCam.fieldOfView = 60;
 
-        //getting the audio sound component
-        audioSource = GetComponent<AudioSource>();
+        //setting the audio sound component
+        setAudioSource();
     }
     //we want to update every frame
     void Update()
@@ -54,7 +54,10 @@ public class Become : MonoBehaviour
         //code executes after the waitTime is elapsed 
         SwitchCameras();
 
-        //play the sound fx when swithing
+        //setting the audio source component to the new gameobject (player)
+        setAudioSource();
+
+        //playing the sound effect
         PlaySoundFx();
     }
    
@@ -81,6 +84,18 @@ public class Become : MonoBehaviour
 
         //Destroy the old camera.
         Destroy(gameObject);
+    }
+
+    private void setAudioSource()
+    {
+        if (GetComponent<AudioSource>() == null)
+        {
+            audioSource = gameObject.AddComponent<AudioSource>() as AudioSource;
+        }
+        else
+        {
+            audioSource = GetComponent<AudioSource>();
+        }
     }
 
     private void PlaySoundFx()
