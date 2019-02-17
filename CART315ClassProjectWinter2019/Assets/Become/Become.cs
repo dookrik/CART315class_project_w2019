@@ -33,6 +33,12 @@ public class Become : MonoBehaviour
             //if the mouse clicks on the gameobject and that gameobject has a CharacterController as a component, meaning that object is a player
             if (Physics.Raycast(rayEnd, out hit, clickRange) && hit.collider.gameObject.GetComponentInParent<CharacterController>() != null)
             {
+                //setting the audio source component to the new gameobject (player)
+                setAudioSource();
+
+                //playing the sound effect
+                PlaySoundFx();
+
                 //add a delay for the camera-switch animation
                 StartCoroutine("SwitchCameraDelay", 0.7f);
             }
@@ -53,12 +59,6 @@ public class Become : MonoBehaviour
         yield return new WaitForSeconds(waitTime);
         //code executes after the waitTime is elapsed 
         SwitchCameras();
-
-        //setting the audio source component to the new gameobject (player)
-        setAudioSource();
-
-        //playing the sound effect
-        PlaySoundFx();
     }
    
 
