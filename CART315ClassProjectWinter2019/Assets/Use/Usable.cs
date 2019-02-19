@@ -6,10 +6,6 @@ using UnityEngine.Events;
 public class Usable : MonoBehaviour
 {
 
-
-    public GameObject equippedItem;
-    public GameObject effectedItem;
-
     /**
      * How far away can an object be and
      * still get used?
@@ -21,8 +17,9 @@ public class Usable : MonoBehaviour
      * These can be set in the Unity editor and will be
      * optionally triggered by the use action
      */
-    public ParticleSystem specialEffect;
-    public AudioSource sound;
+    private ParticleSystem specialEffect;
+    private AudioSource sound;
+    public AudioClip audioClip;
 
 
     /**
@@ -31,6 +28,12 @@ public class Usable : MonoBehaviour
      * item has been used
      */
     public UnityEvent doAfterBeingUsed;
+
+    private void Start()
+    {
+        specialEffect = GetComponent<ParticleSystem>();
+        sound = GetComponent<AudioSource>();
+    }
 
     /**
      * Use this object on whatever is in front of the
@@ -42,12 +45,21 @@ public class Usable : MonoBehaviour
         //Call Use(useTarget, shouldDestroyAfterUse)
         RaycastHit hit;
         // Does the ray intersect any objects excluding the player layer
-        if (Physics.Raycast(transform.parent.position, transform.forward, out hit, maxDistance))
+        if (Physics.Raycast(transform.parent.parent.position, transform.forward, out hit, maxDistance))
         {
             UseTarget TargetUse = hit.collider.gameObject.GetComponent<UseTarget>();
             if (TargetUse != null)
             {
                 TargetUse.Use();
+                if (specialEffect != null)
+                {
+                    specialEffect.Play();
+
+                }
+                if (sound != null)
+                {
+                    sound.PlayOneShot(audioClip);
+                }
                 if (shouldDestroyAfterUse)
                 {
                     Destroy(gameObject);
@@ -72,6 +84,15 @@ public class Usable : MonoBehaviour
         if (TargetUse != null)
         {
             TargetUse.Use();
+            if (specialEffect != null)
+            {
+                specialEffect.Play();
+
+            }
+            if (sound != null)
+            {
+                sound.PlayOneShot(audioClip);
+            }
             if (shouldDestroyAfterUse)
             {
                 Destroy(gameObject);
