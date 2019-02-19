@@ -35,9 +35,18 @@ public class Spawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //initialize audiosource
-        soundSource = GetComponent<AudioSource>();
-        
+        //check if there isn't a audioSource component
+        if (GetComponent<AudioSource>() == null)
+        {
+            //add an audioSource component
+            soundSource = gameObject.AddComponent<AudioSource>() as AudioSource;
+        }
+        else
+        {
+            //getting the audioSource Component
+            soundSource = GetComponent<AudioSource>();
+        }
+
         //instantiating the portalAnimation
         portal = Instantiate(portalAnimation, transform.position, transform.rotation) as GameObject;
         portal.transform.localScale = new Vector3(1f, 1f, 1f);
