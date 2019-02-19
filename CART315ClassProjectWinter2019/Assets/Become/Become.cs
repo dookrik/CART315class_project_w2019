@@ -36,11 +36,12 @@ public class Become : MonoBehaviour
                 //setting the audio source component to the new gameobject (player)
                 setAudioSource();
 
+                //add a delay for the camera-switch animation
+                StartCoroutine("SwitchCameraDelay", 0.7f);
+
                 //playing the sound effect
                 PlaySoundFx();
 
-                //add a delay for the camera-switch animation
-                StartCoroutine("SwitchCameraDelay", 0.7f);
             }
         }
         //turn the camera towards the clicked object and make sure it's a player
@@ -107,10 +108,8 @@ public class Become : MonoBehaviour
 
     private void PlaySoundFx()
     {
-        //selecting the sound clip
-        audioSource.clip = swapSound;
-        //playing the sound clip
-        audioSource.Play();
+        //play the sound fx        
+        audioSource.PlayOneShot(swapSound, 0.8f);
     }
 
 }
