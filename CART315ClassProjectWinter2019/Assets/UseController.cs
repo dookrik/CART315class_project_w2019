@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class UseController : MonoBehaviour
 {
+    //Must have the pickupper script attactched to the object in order for it to work
+
     private Pickupper PickUp;
     // Start is called before the first frame update
     void Start()
@@ -14,6 +16,7 @@ public class UseController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //use button is E 
         if (Input.GetButtonDown("Use"))
         {
             if (PickUp.IsHoldingObject())
