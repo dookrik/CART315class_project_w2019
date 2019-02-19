@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class UseController : MonoBehaviour
 {
-    //Must have the pickupper script attactched to the object in order for it to work
+    //Must have the pickupper script attached to the object in order for it to work
 
     private Pickupper PickUp;
     // Start is called before the first frame update
