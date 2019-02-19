@@ -16,11 +16,11 @@ public class Pickupper2 : MonoBehaviour
     //The Grabpoint is the empty where the object is placed when it is picked up
     public Transform grabPoint;
 
-    public GameObject pickup;
+    private GameObject pickup;
     private List<GameObject> pickups = new List<GameObject>();
     private bool inRange;
-    public bool buttonDown;
-    public bool isHolding;
+    private bool buttonDown;
+    private bool isHolding;
 
     // Start is called before the first frame update
     void Start()
@@ -83,6 +83,7 @@ public class Pickupper2 : MonoBehaviour
 
         if(pickups.Count == 1 && buttonDown == false)
         {
+            
             pickup = pickups[0];
             buttonDown = true;
             inRange = true;
@@ -134,8 +135,8 @@ public class Pickupper2 : MonoBehaviour
         return pickup;
     }
 
-    //EAT added the function EatIt in ordet to keep things private
-    public void EatIt()
+    //EAT added the function DigestTheFood() in order to keep things private
+    public void DigestTheFood()
     {
         isHolding = false;
         buttonDown = false;

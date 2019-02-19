@@ -2,8 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/*====================================================================================
+EAT Script
+by
+Ebrahim Badawi, Martin-John Hearty, Catherine Weng
+
+Description:
+Player can eat the item it picked up by Pressing "E" on keyboard!
+while eatenig, the food decreases in size and when it's finished, player drops its leftovers. 
+
+
+====================================================================================*/
+
 public class Eat : MonoBehaviour
 {
+    public float speed = 2f;
+    public float duration = 5f;
     private Pickupper2 myFood;
     Transform foodLoc;
 
@@ -18,8 +32,6 @@ public class Eat : MonoBehaviour
 
             if (Input.GetButtonDown("Eat"))
             {
-               
-
                 foreach (Transform child in foodLoc)
                 {
                     if (child.gameObject != null)
@@ -31,30 +43,43 @@ public class Eat : MonoBehaviour
                         //myFood.pickup = null;
 
                         // if No, I've created a function inside of Pickupper2 Script
+                       
+                        Vector3 foodSize = child.gameObject.transform.localScale;                    
+                        StartCoroutine(EatTheShit(child, foodSize, duration));           
 
-                        myFood.EatIt();
-                        Destroy(child.gameObject);
-                        CreateCube();
                     }
-                }
-
-                
-
-                //Instantiate(food, foodLoc.position, Quaternion.identity);
-
-                //Debug.Log("fucked");
+                }    
             }
         }
     }
 
-    private void CreateCube()
-    {
-        GameObject food;
-        food = GameObject.CreatePrimitive(PrimitiveType.Cube);
 
-        food.transform.localScale = foodLoc.localScale / 3;
-        food.transform.position = foodLoc.position;
-        food.AddComponent<Rigidbody>();
-        Destroy(food.gameObject, 2f);
+   public IEnumerator EatTheShit(Transform _shit, Vector3 _foodSize, float _time)
+   {
+        float i = 0.0f;
+        float eatingRate = (1.0f / _time) * speed;
+
+        while (i <= 1.0f)
+        {
+            i += Time.deltaTime * eatingRate;
+            _shit.transform.localScale = Vector3.Lerp(_foodSize, _foodSize / 2, i);   
+            yield return null;
+        }
+        if (i >= 1.0f)
+        {
+            yield return StartCoroutine(FinishEating(_shit));
+        }
+
+   }
+
+
+    public IEnumerator FinishEating(Transform _shit)
+    {
+        _shit.GetComponent<Rigidbody>().useGravity = true;
+        _shit.parent = null;
+        myFood.DigestTheFood();
+        Destroy(_shit.gameObject, duration/3);
+        yield return null;
     }
+   
 }

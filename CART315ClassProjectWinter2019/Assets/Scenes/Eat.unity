@@ -449,7 +449,7 @@ MonoBehaviour:
   speed: 3
   maxJumpVel: 4
   jumpAccel: 2
-  gravity: 2
+  gravity: 10
   controller: {fileID: 453995913}
 --- !u!114 &453995916
 MonoBehaviour:
@@ -460,13 +460,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 453995908}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a88fd0c4ae2add4581c2f11a9b5ce3c, type: 3}
+  m_Script: {fileID: 11500000, guid: 5220d5cd29539f94fbb9f57ab8ab2ded, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  grabPoint: {fileID: 1953466188}
-  pickup: {fileID: 0}
-  buttonDown: 0
-  isHolding: 0
+  speed: 2
+  duration: 5
 --- !u!114 &453995917
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -476,9 +474,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 453995908}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ada5700f985c4f049ae4df71a47dbfce, type: 3}
+  m_Script: {fileID: 11500000, guid: f9072284353745c49bf1716467e0f69b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  grabPoint: {fileID: 1953466188}
 --- !u!4 &581498238 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 585284688211299179, guid: dc38d284367fe7e4bb090eb3369697d2,
@@ -704,8 +703,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1803072376}
-  m_LocalRotation: {x: -0.35162848, y: -0.00037704408, z: 0.00014162995, w: -0.93613964}
-  m_LocalPosition: {x: -0.4586227, y: 4.637149, z: -6.6127863}
+  m_LocalRotation: {x: 0.12367274, y: 0.292855, z: -0.038230292, w: 0.94735396}
+  m_LocalPosition: {x: -4.6148205, y: 1.532207, z: -5.935957}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
