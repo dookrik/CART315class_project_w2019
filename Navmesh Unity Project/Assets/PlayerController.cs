@@ -25,10 +25,13 @@ public class PlayerController : MonoBehaviour
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit))
             {
-                agent.SetDestination(hit.point);
-               //direction = hit.point;
+                //agent.SetDestination(hit.point);
+                locomotionCtl.Locomote(agent.steeringTarget, false);
+                //direction = hit.point;
             }
         }
+
+        agent.velocity = locomotionCtl.controller.velocity;
 
         // Vector3 worldDeltaPosition = agent.steeringTarget - transform.position;
         // Debug.Log("distance:: " + worldDeltaPosition);
