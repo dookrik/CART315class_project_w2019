@@ -18,14 +18,14 @@ public class Pickupper : MonoBehaviour
 
     private GameObject pickup;
     private List<GameObject> pickups = new List<GameObject>();
-    private bool isHolding;
+    private bool inRange;
     private bool buttonDown;
-    
+    private bool isHolding;
 
     // Start is called before the first frame update
     void Start()
     {
-        isHolding = false;
+        inRange = false;
         buttonDown = false;
     }
 
@@ -35,7 +35,7 @@ public class Pickupper : MonoBehaviour
         //if someone presses the button this parents the pickupable to the selected empty.
         if (buttonDown)
         {
-            if (isHolding)
+            if (inRange)
             {
                 pickup.GetComponent<Rigidbody>().useGravity = false;
                 pickup.transform.position = grabPoint.transform.position;
@@ -62,20 +62,21 @@ public class Pickupper : MonoBehaviour
             if (pickups.Count == 0)
             {
                 pickup = null;
-                isHolding = false;
+                inRange = false;
             }    
         }
     }
     
     //This function will activate a pickup of the nearest object within range.
     //IE Input.GetButtonDown(myButtonName) {Pickupper1.buttonCheck()}
-    public void buttonCheck()
+    public void ButtonCheck()
     {
         if (buttonDown)
         {
             buttonDown = false;
             pickup.GetComponent<Rigidbody>().useGravity = true;
             pickup.transform.parent = null;
+            isHolding = false;
             return;
         }
 
@@ -83,6 +84,7 @@ public class Pickupper : MonoBehaviour
         {
             pickup = pickups[0];
             buttonDown = true;
+            inRange = true;
             isHolding = true;
         }
 
@@ -104,6 +106,7 @@ public class Pickupper : MonoBehaviour
             }
 
             buttonDown = true;
+            inRange = true;
             isHolding = true;
         }
      }
@@ -111,6 +114,16 @@ public class Pickupper : MonoBehaviour
     //Debug button fire
     private void OnMouseDown()
     {
-        buttonCheck();
+        ButtonCheck();
+    }
+
+    public bool IsHoldingObject()
+    {
+        return isHolding;
+    }
+
+    public GameObject HeldObject()
+    {
+        return pickup;
     }
 }
