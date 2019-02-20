@@ -8,7 +8,8 @@ by
 Ebrahim Badawi, Martin-John Hearty, Catherine Weng
 
 Description:
-Player can eat the item it picked up by Pressing "E" on keyboard!
+Player can eat the items it pickes up, which have "Eatable" script attached to them, 
+by Pressing "E" on keyboard!
 while eatenig, the food decreases in size and when it's finished, player drops its leftovers. 
 
 
@@ -34,7 +35,8 @@ public class Eat : MonoBehaviour
             {
                 foreach (Transform child in foodLoc)
                 {
-                    if (child.gameObject != null)
+                    Eatable eatable = child.GetComponent<Eatable>();
+                    if (child.gameObject != null && eatable != null)
                     {
                         //If the variables are public, we can do this:
 
