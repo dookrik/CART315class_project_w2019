@@ -4,10 +4,16 @@ using UnityEngine;
 
 public class Become : MonoBehaviour
 {
+    //camera switching variables 
     private Camera fpsCam;
     RaycastHit hit;
     private float clickRange = 100f;
     private float t = 0.0f;
+
+    //camera perspective change varaibles
+    private int CamMode = 1;
+    private Vector3 thirdCamPosition;
+    private Vector3 firstCamPosition;
 
     //sounds
     private AudioClip swapSound;
@@ -18,6 +24,9 @@ public class Become : MonoBehaviour
         fpsCam = GetComponent<Camera>();
         fpsCam.fieldOfView = 60;
 
+        firstCamPosition = GetComponent<Transform>().localPosition;
+        thirdCamPosition = firstCamPosition + new Vector3(0,5,-5);
+        
         //setting the audio sound component
         setAudioSource();
     }
@@ -44,6 +53,18 @@ public class Become : MonoBehaviour
 
             }
         }
+        if (Input.GetButtonDown("Camera"))
+        {
+            if (CamMode == 1)
+            {
+                CamMode = 0;
+            }
+            else
+            {
+                CamMode++;
+            }
+            StartCoroutine(CamChange());
+        }
         //turn the camera towards the clicked object and make sure it's a player
         if (hit.collider != null && hit.collider.gameObject.GetComponentInParent<CharacterController>() != null)
         {
@@ -53,6 +74,22 @@ public class Become : MonoBehaviour
             fpsCam.fieldOfView = Mathf.Lerp(60, 1, t);
         }
         t += 0.7f * Time.deltaTime;
+    }
+
+    //switching between first and 3rd perspective
+    IEnumerator CamChange()
+    {
+        yield return new WaitForSeconds(0.01f);
+        if (CamMode == 0)
+        {
+            this.GetComponent<Transform>().localPosition = thirdCamPosition;
+            this.GetComponent<Transform>().Rotate(33,0,0);
+        }
+        if (CamMode == 1)
+        {
+            this.GetComponent<Transform>().localPosition = firstCamPosition;
+            this.GetComponent<Transform>().localRotation = new Quaternion(0, 0, 0, 1);
+        }
     }
 
     IEnumerator SwitchCameraDelay(float waitTime)
