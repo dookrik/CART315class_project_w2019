@@ -8,7 +8,7 @@ public class Become : MonoBehaviour
     private Camera fpsCam;
     RaycastHit hit;
     private float clickRange = 100f;
-    private float t = 0.0f;
+    private float step = 0.0f;
 
     //camera perspective change varaibles
     private int CamMode = 1;
@@ -22,8 +22,6 @@ public class Become : MonoBehaviour
     void Start()
     {
         fpsCam = GetComponent<Camera>();
-        fpsCam.fieldOfView = 60;
-
         firstCamPosition = GetComponent<Transform>().localPosition;
         thirdCamPosition = firstCamPosition + new Vector3(0,5,-5);
         
@@ -46,7 +44,7 @@ public class Become : MonoBehaviour
                 setAudioSource();
 
                 //add a delay for the camera-switch animation
-                StartCoroutine("SwitchCameraDelay", 0.7f);
+                StartCoroutine("SwitchCameraDelay", 0.5f);
 
                 //playing the sound effect
                 PlaySoundFx();
@@ -69,11 +67,14 @@ public class Become : MonoBehaviour
         if (hit.collider != null && hit.collider.gameObject.GetComponentInParent<CharacterController>() != null)
         {
             Vector3 direction = hit.collider.gameObject.transform.position - transform.position;
-            Quaternion endRotation = Quaternion.LookRotation(direction);
-            transform.rotation = Quaternion.Slerp(transform.rotation, endRotation, 20f * Time.deltaTime);
-            fpsCam.fieldOfView = Mathf.Lerp(60, 1, t);
+            if (direction != Vector3.zero)
+            {
+                Quaternion endRotation = Quaternion.LookRotation(direction);
+                transform.rotation = Quaternion.Slerp(transform.rotation, endRotation, 20f * Time.deltaTime);
+            }
+            transform.position = Vector3.MoveTowards(transform.position, hit.collider.gameObject.transform.position, step);
         }
-        t += 0.7f * Time.deltaTime;
+        step += 0.25f * Time.deltaTime;
     }
 
     //switching between first and 3rd perspective
