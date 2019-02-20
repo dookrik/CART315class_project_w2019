@@ -64,7 +64,8 @@ public class Eat : MonoBehaviour
         while (i <= 1.0f)
         {
             i += Time.deltaTime * eatingRate;
-            _shit.transform.localScale = Vector3.Lerp(_foodSize, _foodSize / 2, i);   
+            _shit.transform.localScale = Vector3.Lerp(_foodSize, _foodSize / 2, i);
+            transform.localScale = Vector3.Lerp(transform.localScale, transform.localScale + _foodSize / 100, i);
             yield return null;
         }
         if (i >= 1.0f)
