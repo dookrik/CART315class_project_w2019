@@ -30,6 +30,7 @@ public class Combust : Break
 
         GameObject particle = Instantiate(particles.gameObject);
         particle.transform.position = transform.position;
+    
         Destroy(particle, 6);
 
         Invoke("explode", 5);
