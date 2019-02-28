@@ -44,10 +44,10 @@ public class Break : MonoBehaviour {
 		
 	}
 
-    private void OnMouseDown()
-    {
-        explode();
-    }
+    //private void OnMouseDown()
+    //{
+    //    explode();
+    //}
 
     // Makes the object disappear and calls cunction to create pieces
     public void explode(){
