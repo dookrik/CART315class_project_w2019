@@ -14,25 +14,48 @@ using UnityEngine;
 
 public class Combust : Break
 {
+    public float temperature;
 
     public ParticleSystem particles; // Reference to particle system
-    //public Break burn;
 
-    //void Expire() 
-    //{
-    //    burn.explode();
-    //}
-
-    private void OnMouseDown()
+    public void burn()
     {
-       
         Vector3 combustionPos = transform.position;
 
         GameObject particle = Instantiate(particles.gameObject);
         particle.transform.position = transform.position;
-    
+
         Destroy(particle, 6);
 
         Invoke("explode", 5);
+
+        temperature += 10;
+
+        if(temperature > 5) 
+        {
+            gameObject.tag = "Burning";
+        }
+       
+ 
     }
- }
+
+    private void OnMouseDown()
+    {
+        burn();
+    }
+
+   
+    public void OnCollisionEnter(Collision other)
+    {
+        if(other.gameObject.CompareTag("Burning")) 
+        {
+
+            this.temperature += 10;
+            burn();
+        }
+
+    }
+
+
+
+}
