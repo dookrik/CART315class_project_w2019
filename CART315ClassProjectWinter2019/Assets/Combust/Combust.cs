@@ -14,12 +14,15 @@ using UnityEngine;
 
 public class Combust : Break
 {
+
     public float temperature;
 
     public ParticleSystem particles; // Reference to particle system
 
+    // burn function describes basic behaviour of a burning object
     public void burn()
     {
+        // Where the flame particle system will be displayed
         Vector3 combustionPos = transform.position;
 
         GameObject particle = Instantiate(particles.gameObject);
@@ -31,6 +34,7 @@ public class Combust : Break
 
         temperature += 10;
 
+        //When the temperature gets above 5, the object receives tag "Burning"
         if(temperature > 5) 
         {
             gameObject.tag = "Burning";
@@ -39,12 +43,7 @@ public class Combust : Break
  
     }
 
-    private void OnMouseDown()
-    {
-        burn();
-    }
-
-   
+    // Combustible object gets on fire on collision with a burning object
     public void OnCollisionEnter(Collision other)
     {
         if(other.gameObject.CompareTag("Burning")) 
@@ -56,6 +55,26 @@ public class Combust : Break
 
     }
 
+    // Combustible object gets on fire staying in contact with a burning object
+    public void OnTriggerStay(Collider other)
+    {
+            if (Vector3.Distance(other.transform.position, this.transform.position) < 50)
+            {
+                burn();
+            }
 
+    }
+
+    // FOR TESTING PURPOSES
+    //Sets a combustible object on fire when its temperature gets abpve 5
+    // temperature increases by 1 on each mouse click
+    private void OnMouseDown()
+    {
+        temperature += 1;
+        if (temperature > 5)
+        {
+            burn();
+        }
+    }
 
 }
