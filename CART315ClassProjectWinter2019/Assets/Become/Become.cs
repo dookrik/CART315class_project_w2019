@@ -64,7 +64,7 @@ public class Become : MonoBehaviour
             StartCoroutine(CamChange());
         }
         //turn the camera towards the clicked object and make sure it's a player
-        if (hit.collider != null && hit.collider.gameObject.GetComponentInParent<CharacterController>() != null)
+        if (hit.collider != null && hit.collider.gameObject.GetComponentInParent<LocomotionController>() != null)
         {
             Vector3 direction = hit.collider.gameObject.transform.position - transform.position;
             if (direction != Vector3.zero)
@@ -110,15 +110,13 @@ public class Become : MonoBehaviour
         //make the camera a chid of the clicked game object and center its position relative to the player
         clickedObject.transform.SetParent(hit.collider.gameObject.transform);
         clickedObject.transform.localRotation = Quaternion.Euler(0, 0, 0);
-
-       // hit.collider.gameObject.GetComponentInChildren<Camera>().fieldOfView = Mathf.Lerp(20, 60, t);
-
+        
 
         //enable and disable the LocomotionUserControl - enable on one player at a time
-        if (hit.collider.gameObject.GetComponentInParent<LocomotionUserControl>() != null)
+        if (hit.collider.gameObject.GetComponentInParent<LocomotionController>() != null)
         {
-            GetComponentInParent<LocomotionUserControl>().enabled = false;
-            hit.collider.gameObject.GetComponentInParent<LocomotionUserControl>().enabled = true;
+            GetComponentInParent<LocomotionController>().enabled = false;
+            hit.collider.gameObject.GetComponentInParent<LocomotionController>().enabled = true;
         }
 
         //Destroy the old camera.
