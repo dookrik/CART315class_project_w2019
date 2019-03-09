@@ -6,6 +6,7 @@ using System.Collections;
 public class Behaviour : MonoBehaviour
 {
     private bool inRange;
+    private bool hasArrived = false;
     private GameObject WhatToTarget;
     private List<GameObject> objects = new List<GameObject>();
     private script DesiredAction;
@@ -38,10 +39,17 @@ public class Behaviour : MonoBehaviour
 
 
             inRange = true;
-            //here is where i call the navmesh script using obj.transform as the destination
-
+            //here is where i call the navmesh script using obj.transform as the destination                  
         }
-    }
+ }
+ 
+ void HasArrivedAtTarget(){
+ hasArrived= true;
+ //this is where the desired action gets called once navmesh has brought it to its target
+ 
+ 
+ 
+ }
     //add objects that fulfill the target type to a list when they enter the radius
     private void OnTriggerEnter(Collider other)
     {
