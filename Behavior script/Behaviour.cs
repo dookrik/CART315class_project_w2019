@@ -5,6 +5,7 @@ using System.Collections;
 //TO DO: ensure that it correctly calls and uses navmesh script to move to target, does desired action upon arriving
 public class Behaviour : MonoBehaviour
 {
+    public NavMeshController Navigate;
     private bool inRange;
     private bool hasArrived = false;
     private GameObject WhatToTarget;
@@ -39,7 +40,9 @@ public class Behaviour : MonoBehaviour
 
 
             inRange = true;
-            //here is where i call the navmesh script using obj.transform as the destination                  
+            //here is where i call the navmesh script using obj.transform as the destination  
+            //hopefully the navmesh script gets called properly, and accepts the .position
+            Navigate.NavMeshProvider(WhatToTarget.transform.position);
         }
  }
  
