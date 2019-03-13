@@ -87,7 +87,7 @@ public class Spawner : MonoBehaviour
     //primary spawn function without parameter
     public void Spawn()
     {
-        if (currentSpawn <= maxSpawn)
+        if (currentSpawn < maxSpawn)
         {
             //play the sound fx        
             soundSource.PlayOneShot(soundFx, soundVolume);
