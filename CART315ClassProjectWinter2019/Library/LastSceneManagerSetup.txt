@@ -1,4 +1,0 @@
-sceneSetups:
-- path: Assets/Combust/Combust.unity
-  isLoaded: 1
-  isActive: 1
