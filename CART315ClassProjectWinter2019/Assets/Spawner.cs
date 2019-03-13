@@ -6,6 +6,8 @@ public class Spawner : MonoBehaviour
 {
     //game object array
     public GameObject[] spawnObject;
+    //scaler for the spawnObject
+    public float objectScale = 1f;
     //game object for the portal animation
     public GameObject portalAnimation;
     //animation enable flag
@@ -85,10 +87,13 @@ public class Spawner : MonoBehaviour
     //primary spawn function without parameter
     public void Spawn()
     {
-        if (currentSpawn <= maxSpawn)
+        if (currentSpawn < maxSpawn)
         {
             //play the sound fx        
             soundSource.PlayOneShot(soundFx, soundVolume);
+
+            //modify the scale of the gameobject
+            spawnObject[currentArrayIndex].transform.localScale = new Vector3(objectScale, objectScale, objectScale);
 
             //create a temporary object holder for prefab cloning
             GameObject tempObject = Instantiate(spawnObject[currentArrayIndex], transform.position, transform.rotation) as GameObject;
