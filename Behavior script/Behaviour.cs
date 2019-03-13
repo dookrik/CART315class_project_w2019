@@ -1,11 +1,17 @@
 ﻿using UnityEngine;
 using System.Collections;
 //CURRENTLY WIP & has not been tested on unity
-// CURRENT ISSUES: does not call navmesh script, does not activate desired action script
-//TO DO: ensure that it correctly calls and uses navmesh script to move to target, does desired action upon arriving
+// CURRENT ISSUES:  does not activate ALL desired action script
+//TO DO: ensure that it correctly calls and uses navmesh script to move to target, does desired action upon arriving & CHECKS WHEN ARRIVED.
 public class Behaviour : MonoBehaviour
 {
+    //navmesh script
     public NavMeshController Navigate;
+    //pickup script
+    public Pickupper ActionPickup;
+    //Use script
+    public Useable ActionUse;
+    
     private bool inRange;
     private bool hasArrived = false;
     private GameObject WhatToTarget;
@@ -43,6 +49,15 @@ public class Behaviour : MonoBehaviour
             //here is where i call the navmesh script using obj.transform as the destination  
             //hopefully the navmesh script gets called properly, and accepts the .position
             Navigate.NavMeshProvider(WhatToTarget.transform.position);
+            //Conditional arguements for different actions, must fit the different call limitations of the action scripts
+            if(DesiredAction == Pickupper){
+            //issue: calling pickup requires a button to be pressed
+            pickupper.ButtonCheck();
+            }
+            if(DesiredAction == Usable){
+            //as per documentation, this should use the targeted object and not destroy it afterwards
+            ActionUse.Use(WhatToTarget, false);
+            }
         }
  }
  
