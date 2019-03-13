@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6985198535408090203}
   - component: {fileID: 3421414941480868065}
-  - component: {fileID: 6627485377844446070}
+  - component: {fileID: 3968943804600060839}
   - component: {fileID: 7743360092889135339}
   m_Layer: 0
   m_Name: Camera_Become
@@ -75,7 +75,7 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!114 &6627485377844446070
+--- !u!114 &3968943804600060839
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -84,7 +84,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4615179108878061884}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4dac930be68bc478e9ba69bd5617de04, type: 3}
+  m_Script: {fileID: 11500000, guid: b72f887ba6f331c4abf30d5b5c3d28f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!81 &7743360092889135339
