@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657868, g: 0.49641263, b: 0.57481706, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -290,6 +290,7 @@ GameObject:
   - component: {fileID: 519297522}
   - component: {fileID: 519297521}
   - component: {fileID: 519297523}
+  - component: {fileID: 519297524}
   m_Layer: 0
   m_Name: Cylinder
   m_TagString: pickupable
@@ -364,7 +365,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519297514}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.38, y: 0.5, z: 0}
+  m_LocalPosition: {x: -2.26, y: 0.55, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -398,13 +399,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e04ed74f8313418bb18359f9bc91f96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxDistance: 10
-  audioClip: {fileID: 8300000, guid: 071a1643661755d4a86f21ceeb85d06d, type: 3}
-  doAfterBeingUsed:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
 --- !u!199 &519297521
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -5167,6 +5161,25 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &519297524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519297514}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 294eff252f54e4847b0aed76c3301f50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxDistance: 2
+  audioClip: {fileID: 8300000, guid: 7186df945fa8741c9802488d13818576, type: 3}
+  doAfterBeingUsed:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!1 &539588772
 GameObject:
   m_ObjectHideFlags: 0
@@ -5263,6 +5276,7 @@ GameObject:
   - component: {fileID: 695287155}
   - component: {fileID: 695287160}
   - component: {fileID: 695287159}
+  - component: {fileID: 695287161}
   m_Layer: 0
   m_Name: Cylinder (1)
   m_TagString: pickupable
@@ -5374,12 +5388,12 @@ MonoBehaviour:
   OnItemUsed:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 706831053}
-        m_MethodName: TestUse
-        m_Mode: 2
+      - m_Target: {fileID: 695287161}
+        m_MethodName: open
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 695287154}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -5387,6 +5401,18 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &695287161
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 695287154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d3168f7931ea40dc98093715b2c4f15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &706831043
 GameObject:
   m_ObjectHideFlags: 0
@@ -5405,6 +5431,7 @@ GameObject:
   - component: {fileID: 706831052}
   - component: {fileID: 706831051}
   - component: {fileID: 706831053}
+  - component: {fileID: 706831054}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -5568,6 +5595,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 56e2c50be826c114980c253321c03c90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &706831054
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 706831043}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3528c77fdc52a497488c4a66e1975a40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1908667625
