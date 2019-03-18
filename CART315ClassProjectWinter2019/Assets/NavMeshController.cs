@@ -1,14 +1,16 @@
-﻿/* How to use Navmesh script
- * 1. download navmesh component framework  https://github.com/Unity-Technologies/NavMeshComponents
- * 2. create an empty, add navmesh surface component on it
- * 3. build your scene and setup your non walkable objects (by adding navmesh modifier-override-nonwalkable)
- * 4. on navmesh surface comonent ,click bake
- * 5. humanoid navmesh map is created
- * 6. add navmesh agent on your player
- * 7. add navmeshcontroller script on your player
- * 8. add rigidbody component on your player
- * 9. add rigidbodycontroller script on your player
+﻿/* How to use Navmesh script from zero base
+ * 1. download navmesh component framework  https://github.com/Unity-Technologies/NavMeshComponents (already in github project assets folder)
+ * 2. create an empty, add navmesh surface component on it (scene had it already)
+ * 3. build your scene and setup your non walkable objects (by adding navmesh modifier-override-nonwalkable) (scene had it alreay)
+ * 4. on navmesh surface comonent ,click bake (scene had it already)
+ *    for making scene run, on navmesh object, you need to add two navmesh surface script component. one for humanoid, the other for gaint. 
+ * 5. humanoid navmesh map is created , same as gaint navmesh is created. (scene had it alreay)
+ * 6. add navmesh agent on your player, choose humanoid or gaint navmesh map on agent type dropdown menu of player.(you have to do it by yourself)
+ * 7. add navmeshcontroller script on your player (do it by yourself)
+ * 8. add rigidbody component on your player (scene had it already)
+ * 9. add rigidbodycontroller script on your player (do it by yourself)
  * 10. run
+ * 11. questions? slack @Emily
  reference url: https://www.youtube.com/watch?v=CHV1ymlw-P8&feature=youtu.be
 */
 using UnityEngine;
