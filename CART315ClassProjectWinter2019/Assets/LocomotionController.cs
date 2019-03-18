@@ -25,7 +25,7 @@ public class LocomotionController : MonoBehaviour
     {
         //this allows us to access the CharacterController component on current object
         controller = GetComponent<CharacterController>();
-        gameObject.transform.position = new Vector3(0, 2, 0); //dropping a bit just to spawn in
+        //gameObject.transform.position = new Vector3(0, 2, 0); //dropping a bit just to spawn in
     }
     void Update()
     {
