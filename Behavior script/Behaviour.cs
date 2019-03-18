@@ -11,6 +11,8 @@ public class Behaviour : MonoBehaviour
     public Pickupper ActionPickup;
     //Use script
     public Useable ActionUse;
+    //break script
+    public Break ActionBreak;
     
     private bool inRange;
     private bool hasArrived = false;
@@ -49,6 +51,9 @@ public class Behaviour : MonoBehaviour
             //here is where i call the navmesh script using obj.transform as the destination  
             //hopefully the navmesh script gets called properly, and accepts the .position
             Navigate.NavMeshProvider(WhatToTarget.transform.position);
+            //There needs to be a check for when the navmesh has finished before calling the desired action script
+            
+            
             //Conditional arguements for different actions, must fit the different call limitations of the action scripts
             if(DesiredAction == Pickupper){
             //issue: calling pickup requires a button to be pressed
@@ -57,6 +62,12 @@ public class Behaviour : MonoBehaviour
             if(DesiredAction == Usable){
             //as per documentation, this should use the targeted object and not destroy it afterwards
             ActionUse.Use(WhatToTarget, false);
+            }
+            
+            if(DesiredAction == Break){
+            //this should destroy the target object. Presupposes that the object being targetted with the purpose of breaking has the script attached
+            //ideally should simply call the break function on the targeted object
+            ActionBreak.WhatToTarget.explode();
             }
         }
  }
