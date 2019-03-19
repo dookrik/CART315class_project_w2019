@@ -24,39 +24,35 @@ public class Eat : MonoBehaviour
 
     void FixedUpdate()
     {
-        
-        myFood = GameObject.Find("Player").GetComponent<Pickupper2>();
+        //EatFood();
+    }
 
-        if (myFood.IsHoldingObject()) {
-            
+    public void EatFood()
+    {
+
+        myFood = GameObject.Find("Player1").GetComponent<Pickupper2>();
+
+        if (myFood.IsHoldingObject())
+        {
+
             foodLoc = myFood.grabPoint;
-
-            if (Input.GetButtonDown("Eat"))
+            foreach (Transform child in foodLoc)
             {
-                foreach (Transform child in foodLoc)
-                {
-                    Eatable eatable = child.GetComponent<Eatable>();
-                    if (child.gameObject != null && eatable != null)
-                    {
-                        //If the variables are public, we can do this:
-
-                        //myFood.isHolding = false;
-                        //myFood.buttonDown = false; 
-                        //myFood.pickup = null;
-
-                        // if No, I've created a function inside of Pickupper2 Script
-                       
-                        Vector3 foodSize = child.gameObject.transform.localScale;                    
-                        StartCoroutine(EatTheShit(child, foodSize, duration));           
-
-                    }
-                }    
+                Vector3 foodSize = child.gameObject.transform.localScale;
+                StartCoroutine(EatTheShit(child, foodSize, duration));
+                //Eatable eatable = child.GetComponent<Eatable>();
+                //if (child.gameObject != null && eatable != null)
+                //{
+                //    Vector3 foodSize = child.gameObject.transform.localScale;
+                //    StartCoroutine(EatTheShit(child, foodSize, duration));
+                //}
             }
+
         }
     }
 
 
-   public IEnumerator EatTheShit(Transform _shit, Vector3 _foodSize, float _time)
+    public IEnumerator EatTheShit(Transform _shit, Vector3 _foodSize, float _time)
    {
         float i = 0.0f;
         float eatingRate = (1.0f / _time) * speed;

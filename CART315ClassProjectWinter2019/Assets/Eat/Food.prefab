@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 585284688211299177}
   - component: {fileID: 585284688211299174}
   - component: {fileID: 4354912136444104850}
-  - component: {fileID: 3011718212032532078}
+  - component: {fileID: 1097631451488558486}
   m_Layer: 0
   m_Name: Food
   m_TagString: pickupable
@@ -60,7 +60,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 4505e15e5e1b7407696b9298bedf81a0, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -109,7 +109,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &3011718212032532078
+--- !u!114 &1097631451488558486
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -118,6 +118,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 585284688211299175}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c197e9c777b3846c988d9296fc83bef0, type: 3}
+  m_Script: {fileID: 11500000, guid: 96c2771e5c566488d83bd2e2d61c7bcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 2
+  duration: 5

@@ -19,6 +19,14 @@ public class Become : MonoBehaviour
     private AudioClip swapSound;
     private AudioSource audioSource;
 
+    //Action Scripts
+    //public Usable actionUse;
+    //public Spawner actionSpawn;
+    public Pickupper2 actionPickup;
+    public Eat actionEat;
+    //public Throw actionThrow;
+
+
     void Start()
     {
         fpsCam = GetComponent<Camera>();
@@ -31,38 +39,8 @@ public class Become : MonoBehaviour
     //we want to update every frame
     void Update()
     {
-        //if left click
-        if (Input.GetMouseButtonDown(0))
-        {
-            //create a ray that is between the camera position and the positoin of the object the mouse clicked on
-            Ray rayEnd = fpsCam.ScreenPointToRay(Input.mousePosition);
+        PlayerActions();
 
-            //if the mouse clicks on the gameobject and that gameobject has a CharacterController as a component, meaning that object is a player
-            if (Physics.Raycast(rayEnd, out hit, clickRange) && hit.collider.gameObject.GetComponentInParent<CharacterController>() != null)
-            {
-                //setting the audio source component to the new gameobject (player)
-                setAudioSource();
-
-                //add a delay for the camera-switch animation
-                StartCoroutine("SwitchCameraDelay", 0.5f);
-
-                //playing the sound effect
-                PlaySoundFx();
-
-            }
-        }
-        if (Input.GetButtonDown("Camera"))
-        {
-            if (CamMode == 1)
-            {
-                CamMode = 0;
-            }
-            else
-            {
-                CamMode++;
-            }
-            StartCoroutine(CamChange());
-        }
         //turn the camera towards the clicked object and make sure it's a player
         if (hit.collider != null && hit.collider.gameObject.GetComponentInParent<LocomotionController>() != null)
         {
@@ -75,6 +53,48 @@ public class Become : MonoBehaviour
             transform.position = Vector3.MoveTowards(transform.position, hit.collider.gameObject.transform.position, step);
         }
         step += 0.25f * Time.deltaTime;
+    }
+
+    //player actions
+    private void PlayerActions()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            //become other player on left click
+            CreateRay();
+        }
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            if (CamMode == 1)
+                CamMode = 0;
+            else
+                CamMode++;
+            StartCoroutine(CamChange());
+        }
+        if (Input.GetKeyDown(KeyCode.U))
+        {
+            //call use function
+        }
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            //call spawn function
+        }
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            //call pickup function
+            actionPickup.PickUp();
+        }
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            //call eat function
+            actionEat.EatFood();
+
+        }
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            //call throw function
+        }
+        //... more actions
     }
 
     //switching between first and 3rd perspective
@@ -92,6 +112,28 @@ public class Become : MonoBehaviour
             this.GetComponent<Transform>().localRotation = new Quaternion(0, 0, 0, 1);
         }
     }
+
+
+    private void CreateRay()
+    {
+        //create a ray that is between the camera position and the positoin of the object the mouse clicked on
+        Ray rayEnd = fpsCam.ScreenPointToRay(Input.mousePosition);
+
+        //if the mouse clicks on the gameobject and that gameobject has a CharacterController as a component, meaning that object is a player
+        if (Physics.Raycast(rayEnd, out hit, clickRange) && hit.collider.gameObject.GetComponentInParent<CharacterController>() != null)
+        {
+            //setting the audio source component to the new gameobject (player)
+            setAudioSource();
+
+            //add a delay for the camera-switch animation
+            StartCoroutine("SwitchCameraDelay", 0.5f);
+
+            //playing the sound effect
+            PlaySoundFx();
+
+        }
+    }
+
 
     IEnumerator SwitchCameraDelay(float waitTime)
     {
@@ -113,11 +155,11 @@ public class Become : MonoBehaviour
         
 
         //enable and disable the LocomotionUserControl - enable on one player at a time
-        if (hit.collider.gameObject.GetComponentInParent<LocomotionController>() != null)
-        {
-            GetComponentInParent<LocomotionController>().enabled = false;
-            hit.collider.gameObject.GetComponentInParent<LocomotionController>().enabled = true;
-        }
+        //if (hit.collider.gameObject.GetComponentInParent<LocomotionController>() != null)
+        //{
+        //    GetComponentInParent<LocomotionController>().enabled = false;
+        //    hit.collider.gameObject.GetComponentInParent<LocomotionController>().enabled = true;
+        //}
 
         //Destroy the old camera.
         Destroy(gameObject);

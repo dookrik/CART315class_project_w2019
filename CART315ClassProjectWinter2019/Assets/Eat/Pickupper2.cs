@@ -70,7 +70,7 @@ public class Pickupper2 : MonoBehaviour
     
     //This function will activate a pickup of the nearest object within range.
     //IE Input.GetButtonDown(myButtonName) {Pickupper1.buttonCheck()}
-    public void ButtonCheck()
+    public void PickUp()
     {
         if (buttonDown)
         {
@@ -119,11 +119,6 @@ public class Pickupper2 : MonoBehaviour
         }
      }
 
-    //Debug button fire
-    private void OnMouseDown()
-    {
-        ButtonCheck();
-    }
 
     public bool IsHoldingObject()
     {
