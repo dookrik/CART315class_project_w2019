@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,49 +9,47 @@ public class LocomotionController : MonoBehaviour
 
     //these variables we want accessible in the unity editor
     public float speed = 3.0f;
+    float jumpVelocity = 0f;
     public float maxJumpVel = 4f;
-    public float jumpAccel = 10f;
-    public float gravity = 25f;
+    public float jumpAccel = 2f;
+    public float gravity = 2f;
 
-    private bool isGrounded = true;
-
-    private Vector3 moveDirection = Vector3.zero;
 
     //necessary components to locomote
     public CharacterController controller;
-
+    
     // Start is called before the first frame update
     void Start()
     {
         //this allows us to access the CharacterController component on current object
         controller = GetComponent<CharacterController>();
-        //gameObject.transform.position = new Vector3(0, 2, 0); //dropping a bit just to spawn in
     }
-    void Update()
+
+    public void Locomote(Vector3 moveDirection, bool jump)
     {
-        if (controller.isGrounded)
-        {     
-    
-            moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0.0f, Input.GetAxis("Vertical"));
-            moveDirection = transform.TransformDirection(moveDirection);
-            moveDirection = moveDirection * speed;
-            if (Input.GetButton("Run")) moveDirection *= 2.5f;
+        //transforming from world to local
+        moveDirection = transform.InverseTransformDirection(moveDirection.normalized);
 
+        //are we ready to jump?
+        if (jump && controller.isGrounded)
+        {
+            moveDirection.y = maxJumpVel;
 
-            if (Input.GetButton("Jump"))
+            //Below is attempts at making jump smooth~
+            //controller.transform.position = Vector3.Lerp(controller.transform.position, new Vector3 (moveDirection.x, 0f, moveDirection.z), Time.time);
+            /*if (controller.velocity.y < maxJumpVel)
             {
-                moveDirection.y = jumpAccel;
+                jumpVelocity = jumpVelocity + (jumpAccel * Time.deltaTime);
             }
+            if (controller.velocity.y > maxJumpVel)
+            {
+                jump = false;
+            }
+     
+            moveDirection.y = jumpVelocity;*/
         }
 
-        // Apply gravity
-        moveDirection.y = moveDirection.y - (gravity * Time.deltaTime);
-
-        // Move the controller
-        controller.Move(moveDirection * Time.deltaTime);
+        moveDirection.y -= (gravity * Time.deltaTime);
+        controller.Move(moveDirection * speed * Time.deltaTime);
     }
-}  
- 
-
-    
-
+}
