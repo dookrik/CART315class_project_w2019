@@ -58,9 +58,10 @@ public class Behaviour : MonoBehaviour
             //There needs to be a check for when the navmesh has finished before calling the desired action script
             
             
+            //otherGameObject.GetComponent("OtherScript").DoSomething();
             //Conditional arguements for different actions, must fit the different call limitations of the action scripts
             if(DesiredAction == Pickupper){
-            //issue: calling pickup requires a button to be pressed
+            //issue: calling pickup requires a button to be pressed, and does not specify what to pick up in the function
             pickupper.ButtonCheck();
             }
             if(DesiredAction == Usable){
@@ -71,12 +72,14 @@ public class Behaviour : MonoBehaviour
             if(DesiredAction == Break){
             //this should destroy the target object. Presupposes that the object being targetted with the purpose of breaking has the script attached
             //ideally should simply call the break function on the targeted object
-            ActionBreak.WhatToTarget.explode();
+            //ActionBreak.WhatToTarget.explode();
+            WhatToTarget.GetComponent<"Break">.explode();
             }
             
              if(DesiredAction == Combust){
             //should burn the targeted object: may need to specify the gameObject WhatToTarget
-            ActionCombust.Burn();
+            //ActionCombust.Burn();
+            WhatToTarget.GetComponent<"Combust">.Burn();
             }
             if(DesiredAction == Eat){
             //should eat the targeted WhatToTarget
