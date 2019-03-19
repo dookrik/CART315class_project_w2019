@@ -66,6 +66,7 @@
      <Compile Include="Assets\Eat\Eatable.cs" />
      <Compile Include="Assets\Eat\Health.cs" />
      <Compile Include="Assets\Eat\Pickupper2.cs" />
+     <Compile Include="Assets\EnemyBehaviour.cs" />
      <Compile Include="Assets\floatability.cs" />
      <Compile Include="Assets\itemActivator.cs" />
      <Compile Include="Assets\ItemActivatorV2.cs" />
@@ -76,6 +77,7 @@
      <Compile Include="Assets\NavMeshController.cs" />
      <Compile Include="Assets\Pickupper.cs" />
      <Compile Include="Assets\Projectile.cs" />
+     <Compile Include="Assets\Resources\ParticleSystem\DestroyByTimer.cs" />
      <Compile Include="Assets\RigidBodyController.cs" />
      <Compile Include="Assets\Spawner.cs" />
      <Compile Include="Assets\ThirdPersonUserControl.cs" />
