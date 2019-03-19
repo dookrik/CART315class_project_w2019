@@ -13,6 +13,10 @@ public class Behaviour : MonoBehaviour
     public Useable ActionUse;
     //break script
     public Break ActionBreak;
+    //eat script
+    public Eat ActionEat;
+    //combust script
+    public Combust ActionCombust;
     
     private bool inRange;
     private bool hasArrived = false;
@@ -68,6 +72,15 @@ public class Behaviour : MonoBehaviour
             //this should destroy the target object. Presupposes that the object being targetted with the purpose of breaking has the script attached
             //ideally should simply call the break function on the targeted object
             ActionBreak.WhatToTarget.explode();
+            }
+            
+             if(DesiredAction == Combust){
+            //should burn the targeted object: may need to specify the gameObject WhatToTarget
+            ActionCombust.Burn();
+            }
+            if(DesiredAction == Eat){
+            //should eat the targeted WhatToTarget
+            ActionEat.Eat();
             }
         }
  }
