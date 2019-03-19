@@ -74,6 +74,12 @@
  <Reference Include="Unity.Analytics.DataPrivacy">
  <HintPath>/Users/Marie-Eve/Desktop/CART315class_project_w2019/CART315ClassProjectWinter2019/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
  </Reference>
+ <Reference Include="Unity.ProBuilder.AssetIdRemapUtility">
+ <HintPath>/Users/Marie-Eve/Desktop/CART315class_project_w2019/CART315ClassProjectWinter2019/Library/ScriptAssemblies/Unity.ProBuilder.AssetIdRemapUtility.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.ProBuilder.AddOns.Editor">
+ <HintPath>/Users/Marie-Eve/Desktop/CART315class_project_w2019/CART315ClassProjectWinter2019/Library/ScriptAssemblies/Unity.ProBuilder.AddOns.Editor.dll</HintPath>
+ </Reference>
  <Reference Include="UnityEngine.AIModule">
  <HintPath>/Applications/Unity/Unity.app/Contents/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
  </Reference>
