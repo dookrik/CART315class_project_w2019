@@ -1,16 +1,16 @@
-﻿/* How to use Navmesh script from zero base
+/* How to use Navmesh script from zero base
  * 1. download navmesh component framework  https://github.com/Unity-Technologies/NavMeshComponents (already in github project assets folder)
  * 2. create an empty, add navmesh surface component on it (scene had it already)
  * 3. build your scene and setup your non walkable objects (by adding navmesh modifier-override-nonwalkable) (scene had it alreay)
  * 4. on navmesh surface comonent ,click bake (scene had it already)
- *    for making scene run, on navmesh object, you need to add two navmesh surface script component. one for humanoid, the other for gaint. 
- * 5. humanoid navmesh map is created , same as gaint navmesh is created. (scene had it alreay)
- * 6. add navmesh agent on your player, choose humanoid or gaint navmesh map on agent type dropdown menu of player.(you have to do it by yourself)
+ *    for making scene run, on navmesh object, you need to add two navmesh surface script component. one for humanoid, the other for giant. 
+ * 5. humanoid navmesh map is created , same as giant navmesh is created. (scene had it alreay)
+ * 6. add navmesh agent on your player, choose humanoid or giant navmesh map on agent type dropdown menu of player.(you have to do it by yourself)
  * 7. add navmeshcontroller script on your player (do it by yourself)
  * 8. add rigidbody component on your player (scene had it already)
  * 9. add rigidbodycontroller script on your player (do it by yourself)
  * 10. run
- * 11. questions? slack @Emily
+ * 11. questions? slack @Emily or @Marie-Ève
  reference url: https://www.youtube.com/watch?v=CHV1ymlw-P8&feature=youtu.be
 */
 using UnityEngine;
@@ -30,8 +30,8 @@ public class NavMeshController : MonoBehaviour
     {
         locomotionCtl = GetComponent<RigidBodyController>();
         rigidb = GetComponent<Rigidbody>();
-        //agent.Warp(this.transform.position);
-       agent.SetDestination(agent.transform.position);
+        agent.Warp(this.transform.position);
+       //agent.SetDestination(agent.transform.position);
         destination = agent.transform.position;
     }
 
@@ -44,7 +44,7 @@ public class NavMeshController : MonoBehaviour
     {
         //agent.velocity = locomotionCtl.controller.velocity;
         agent.velocity = rigidb.velocity;
-        agent.Warp(this.transform.position);
+        //agent.Warp(this.transform.position);
 
         agent.SetDestination(destination);
 
