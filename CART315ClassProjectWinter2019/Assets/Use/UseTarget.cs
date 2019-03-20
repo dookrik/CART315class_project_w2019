@@ -5,6 +5,7 @@ using UnityEngine.Events;
 
 public class UseTarget : MonoBehaviour
 {
+    public bool shouldBeDestroyedAfterUse = false;
     /**
      * In the Unity editor, set a callback function
      * that will be triggered whenever this
@@ -22,6 +23,11 @@ public class UseTarget : MonoBehaviour
         if (OnItemUsed != null)
         {
             OnItemUsed.Invoke();
+            
+            if (shouldBeDestroyedAfterUse)
+            {
+                Destroy(this.gameObject);
+            }
         }
     }
 }

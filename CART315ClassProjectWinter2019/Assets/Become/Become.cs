@@ -80,7 +80,14 @@ public class Become : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.U))
         {
-            //call use function
+            if (actionPickup && actionPickup.IsHoldingObject())
+            {
+                Usable usable = actionPickup.HeldObject().GetComponent<Usable>();
+                if (usable)
+                {
+                    usable.Use();
+                }
+            }
         }
         if (Input.GetKeyDown(KeyCode.I))
         {
