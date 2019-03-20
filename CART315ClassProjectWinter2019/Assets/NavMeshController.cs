@@ -18,7 +18,7 @@ using UnityEngine.AI;
 public class NavMeshController : MonoBehaviour
 {
     public Camera cam;
-    public NavMeshAgent agent;
+    private NavMeshAgent agent;
     // public LocomotionController locomotionCtl;
     private RigidBodyController locomotionCtl;
     private Rigidbody rigidb;
@@ -28,6 +28,7 @@ public class NavMeshController : MonoBehaviour
 
     private void Start()
     {
+        agent = this.GetComponent<NavMeshAgent>();
         locomotionCtl = GetComponent<RigidBodyController>();
         rigidb = GetComponent<Rigidbody>();
         agent.Warp(this.transform.position);
