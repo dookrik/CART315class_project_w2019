@@ -11,6 +11,7 @@ public class Usable : MonoBehaviour
      * still get used?
      */
     public float maxDistance = 2.0f;
+    public bool shouldBeDestroyedAfterUse = false;
 
   
     /**
@@ -39,7 +40,7 @@ public class Usable : MonoBehaviour
      * Use this object on whatever is in front of the
      * character
      */
-    public void Use(bool shouldDestroyAfterUse = false)
+    public void Use()
     {
         //Get the object in front of this player
         //Call Use(useTarget, shouldDestroyAfterUse)
@@ -61,9 +62,9 @@ public class Usable : MonoBehaviour
                 {
                     sound.PlayOneShot(audioClip);
                 }
-                if (shouldDestroyAfterUse)
+                if (shouldBeDestroyedAfterUse)
                 {
-                    Destroy(gameObject);
+                    Destroy(this.gameObject);
                 }
                 if (doAfterBeingUsed != null)
                 {
@@ -76,7 +77,7 @@ public class Usable : MonoBehaviour
     /**
      * Use this object on a specific target
      */
-    public void Use(GameObject target, bool shouldDestroyAfterUse = false)
+    public void Use(GameObject target)
     {
         //Trigger the particles and sound
         //If shouldDestroyAfterUse is true, then destroy this object
@@ -94,7 +95,7 @@ public class Usable : MonoBehaviour
             {
                 sound.PlayOneShot(audioClip);
             }
-            if (shouldDestroyAfterUse)
+            if (shouldBeDestroyedAfterUse)
             {
                 Destroy(gameObject);
             }

@@ -24,10 +24,6 @@ public class Spawner : MonoBehaviour
     public float spawnerInterval = 3f;
     //z force physic
     public float zForceThrust = 200;
-    //manual button for spawner
-    public string spawnerButton = "Fire1";
-    //manual button for iterating the array object
-    public string selectorButton = "Fire2";
 
     //saved instantiated object
     private GameObject[] savedObject;
@@ -35,8 +31,6 @@ public class Spawner : MonoBehaviour
     private int countEmpty = 0;
     //index of Spawned object
     private int currentSpawnedIndex = 0;
-    //index of selector 
-    private int currentSelectorIndex = 0;
     //audio source component. This component needs to be added on the object
     private AudioSource soundSource;
     //spawner timer
@@ -81,14 +75,10 @@ public class Spawner : MonoBehaviour
     void FixedUpdate()
     {
 
-        //invoke selectObject
-        IterateGameObject(selectorButton);
-
         //invoke spawner with interval param
         SpawnByInterval();
 
-        //invoke spawner with spawnerButton param
-        SpawnByClick();
+        Debug.Log(GetRandomIndex());
 
     }
 
@@ -97,14 +87,16 @@ public class Spawner : MonoBehaviour
     private void InstantiateGameObject()
     {
 
+        int randomIndex = GetRandomIndex();
+
         //get an empty index
         currentSpawnedIndex = checkIndex();
 
         //modify the scale of the gameobject
-        spawnObject[currentSelectorIndex].transform.localScale = new Vector3(objectScale, objectScale, objectScale);
+        spawnObject[randomIndex].transform.localScale = new Vector3(objectScale, objectScale, objectScale);
 
         //create a temporary object holder for prefab cloning
-        GameObject obj = Instantiate(spawnObject[currentSelectorIndex], transform.position, transform.rotation) as GameObject;
+        GameObject obj = Instantiate(spawnObject[randomIndex], transform.position, transform.rotation) as GameObject;
         //add relative force when the prefab is instantiated.
         obj.GetComponent<Rigidbody>().AddRelativeForce(new Vector3(0, 0, zForceThrust));
 
@@ -213,34 +205,8 @@ public class Spawner : MonoBehaviour
         }
     }
 
-    //spawn function by button click
-    public void SpawnByClick()
+    public int GetRandomIndex()
     {
-        if (Input.GetButtonDown(spawnerButton))
-        {
-            Debug.Log(spawnerButton + " is pressed.");
-            //invoke spawn function
-            Spawn();
-        }
-    }
-
-
-    //selectObject selects which object to spawn
-    public void IterateGameObject(string selButton)
-    {
-        //if the button is pressed
-        if (Input.GetButtonDown(selButton))
-        {
-            Debug.Log(selButton+" is pressed. " + currentSelectorIndex);
-            //iterate the game object array
-            if (currentSelectorIndex < spawnObject.Length - 1)
-            {
-                currentSelectorIndex++;
-            }
-            else
-            {
-                currentSelectorIndex = 0;
-            }
-        }
+        return Random.Range(0, spawnObject.Length);
     }
 }
