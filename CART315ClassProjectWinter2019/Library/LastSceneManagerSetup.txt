@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/NavMeshTestScene_renew.unity
+- path: Assets/MainScene/Main.unity
   isLoaded: 1
   isActive: 1

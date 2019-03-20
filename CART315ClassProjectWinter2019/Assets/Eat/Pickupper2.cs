@@ -83,7 +83,7 @@ public class Pickupper2 : MonoBehaviour
 
         if(pickups.Count == 1 && buttonDown == false)
         {
-            
+            Debug.Log("picking up?");
             pickup = pickups[0];
             buttonDown = true;
             inRange = true;

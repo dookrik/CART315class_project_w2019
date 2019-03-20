@@ -6,10 +6,11 @@ using System.Collections.Generic;
 //TO DO: ensure that it correctly calls and uses navmesh script to move to target, does desired action upon arriving & CHECKS WHEN ARRIVED.
 public class BehaviourScript : MonoBehaviour
 {
+    public float action_distance;
     //navmesh script
-    public NavMeshController Navigate;
+    private NavMeshController Navigate;
     //pickup script
-    //public Pickupper2 ActionPickup;
+    public Pickupper2 ActionPickup;
 
     //Use script
     //public Useable ActionUse;
@@ -23,7 +24,7 @@ public class BehaviourScript : MonoBehaviour
     //combust script
     //public Combust ActionCombust;
 
-    public GameObject User;
+    private GameObject User;
     public float Radius = 0f;
     public GameObject Target;
     public NewBehaviourScript Action;
@@ -38,6 +39,8 @@ public class BehaviourScript : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        Navigate = this.GetComponent<NavMeshController>();
+        User = this.gameObject;
         DesiredAction = Action;
         User.AddComponent<SphereCollider>();
         User.GetComponent<SphereCollider>().isTrigger = true;
@@ -123,7 +126,13 @@ public class BehaviourScript : MonoBehaviour
             Navigate.NavMeshProvider(NewDirection); 
             //Navigate.NavMeshProvider(WhatToTarget.transform.position);
             Debug.Log("Navmesh has fired");
-             
+
+            if (this.action_distance > Vector3.Distance(this.transform.position, NewDirection))
+            {
+                Debug.Log("arrived");
+                ActionPickup.PickUp();
+            }
+
             //There needs to be a check for when the navmesh has finished before calling the desired action script
 
             /*
@@ -145,7 +154,7 @@ public class BehaviourScript : MonoBehaviour
              WhatToTarget.GetComponent<"Break">.explode();
              }
 
-              if(DesiredAction == Combust){
+             if(DesiredAction == Combust){
              //should burn the targeted object: may need to specify the gameObject WhatToTarget
              //ActionCombust.Burn();
              WhatToTarget.GetComponent<"Combust">.Burn();
