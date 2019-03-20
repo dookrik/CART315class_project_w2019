@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657856, g: 0.49641234, b: 0.57481724, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -213,10 +213,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 443193982}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 04ef65ea563774ff3b8cf7906ab09a26, type: 3}
+  m_Script: {fileID: 11500000, guid: 9d91eb1bd9cb0a949b8892cdf285715e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cubeSize: 0.07
+  cubeSize: 0.05
   cubesInRow: 5
   minExplosionForce: 1
   maxExplosionForce: 20
@@ -224,7 +224,7 @@ MonoBehaviour:
   explosionUpward: 0.4
   removeDelay: 3
   temperature: 0
-  particles: {fileID: 8773976866846825063, guid: bbd0e516f4e2044d5b34ca47c871b43b,
+  particles: {fileID: 8773976866846825063, guid: 2c46fb1f05565b041b9a1245f0bdb1f8,
     type: 3}
 --- !u!1 &572327234
 GameObject:
@@ -327,7 +327,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 572327234}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 04ef65ea563774ff3b8cf7906ab09a26, type: 3}
+  m_Script: {fileID: 11500000, guid: 9d91eb1bd9cb0a949b8892cdf285715e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   cubeSize: 0.05
@@ -338,7 +338,7 @@ MonoBehaviour:
   explosionUpward: 0.4
   removeDelay: 3
   temperature: 0
-  particles: {fileID: 8773976866846825063, guid: bbd0e516f4e2044d5b34ca47c871b43b,
+  particles: {fileID: 8773976866846825063, guid: 2c46fb1f05565b041b9a1245f0bdb1f8,
     type: 3}
 --- !u!1 &588678953
 GameObject:
@@ -369,7 +369,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 588678953}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 04ef65ea563774ff3b8cf7906ab09a26, type: 3}
+  m_Script: {fileID: 11500000, guid: 9d91eb1bd9cb0a949b8892cdf285715e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   cubeSize: 0.05
@@ -380,7 +380,7 @@ MonoBehaviour:
   explosionUpward: 0.4
   removeDelay: 3
   temperature: 0
-  particles: {fileID: 8773976866846825063, guid: bbd0e516f4e2044d5b34ca47c871b43b,
+  particles: {fileID: 8773976866846825063, guid: 2c46fb1f05565b041b9a1245f0bdb1f8,
     type: 3}
 --- !u!136 &588678955
 CapsuleCollider:
