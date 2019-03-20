@@ -8,17 +8,40 @@ public class EnemyBehaviour : MonoBehaviour
 
     public NavMeshAgent enemyAgent;
     public GameObject player;
+    
+    public Transform[] PatrolPoints;
+    private int currentPatrolPoint = 0;
+    
     private float enemyDistanceDetect = 3.0f;
-    
-    //Wandering AI
-    private bool isWandering = false;
-    private bool isRotatingLeft = false;
-    private bool isRotatingRight = false;
-    private bool isWalking = false;
-    
+
     public bool playerHasObj = false;
     
+    private int index;
+    
+    void start() {
+         //enemyAgent.autoBraking = false;
+        
+        GoToNextPoint();
+
+        //        PatrolPoints = GameObject.FindGameObjectsWithTag("PatrolPoints");
+        //Debug.Log(PatrolPoints.Length);
+    }
+    
+    void GoToNextPoint() {
+                    // Returns if no points have been set up
+            if (PatrolPoints.Length == 0)
+                return;
+
+            // Set the agent to go to the currently selected destination.
+            enemyAgent.SetDestination(PatrolPoints[currentPatrolPoint].position);
+
+            // Choose the next point in the array as the destination,
+            // cycling to the start if necessary.
+            currentPatrolPoint = (currentPatrolPoint + 1) % PatrolPoints.Length;
+    }
+    
     void Update() {
+        
         //Actual distance between player and enemy.
         float distance = Vector3.Distance(transform.position, player.transform.position);
         Vector3 dirToPlayer = transform.position - player.transform.position;
@@ -31,7 +54,6 @@ public class EnemyBehaviour : MonoBehaviour
                 Vector3 newPos = transform.position + dirToPlayer;
                      enemyAgent.SetDestination(newPos);
             // If player hasn't picked up object, enemy will run towards player
-                // For this one we need an AI that will calculate the quickest path to the player.
             } else {
                 //Vector3 newPos = transform.position - dirToPlayer;
                      enemyAgent.SetDestination(player.transform.position);
@@ -39,8 +61,12 @@ public class EnemyBehaviour : MonoBehaviour
         
             
         } else {
+            Debug.Log("outside of distance");
             
-    //Else if enemy isn't within the range he walks around        
+                             if (!enemyAgent.pathPending && enemyAgent.remainingDistance < 0.5f)
+                GoToNextPoint();
+            
+            
             
         }
         
