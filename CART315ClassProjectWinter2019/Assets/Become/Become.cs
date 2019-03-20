@@ -20,11 +20,10 @@ public class Become : MonoBehaviour
     private AudioSource audioSource;
 
     //Action Scripts
-    //public Usable actionUse;
     //public Spawner actionSpawn;
     public Pickupper2 actionPickup;
     public Eat actionEat;
-    //public Throw actionThrow;
+    private Throw actionThrow;
 
 
     void Start()
@@ -32,6 +31,7 @@ public class Become : MonoBehaviour
         fpsCam = GetComponent<Camera>();
         firstCamPosition = GetComponent<Transform>().localPosition;
         thirdCamPosition = firstCamPosition + new Vector3(0,5,-5);
+        actionThrow = GetComponent<Throw>();
         
         //setting the audio sound component
         setAudioSource();
@@ -106,7 +106,10 @@ public class Become : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.T))
         {
-            //call throw function
+            if (actionPickup && actionThrow && actionPickup.IsHoldingObject())
+            {
+                actionThrow.ThrowObject();
+            }
         }
         //... more actions
     }
