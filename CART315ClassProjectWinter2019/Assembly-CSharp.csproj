@@ -55,6 +55,7 @@
   <ItemGroup>
      <Compile Include="Assets\Animations\Anima.cs" />
      <Compile Include="Assets\Become\Become.cs" />
+     <Compile Include="Assets\behaviourTreeTest\EnemyBehaviour.cs" />
      <Compile Include="Assets\Break\Break.cs" />
      <Compile Include="Assets\Break\BreakInTriangles.cs" />
      <Compile Include="Assets\Break\Destructible.cs" />
@@ -66,7 +67,6 @@
      <Compile Include="Assets\Eat\Eatable.cs" />
      <Compile Include="Assets\Eat\Health.cs" />
      <Compile Include="Assets\Eat\Pickupper2.cs" />
-     <Compile Include="Assets\EnemyBehaviour.cs" />
      <Compile Include="Assets\floatability.cs" />
      <Compile Include="Assets\itemActivator.cs" />
      <Compile Include="Assets\ItemActivatorV2.cs" />
