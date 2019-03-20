@@ -37,6 +37,7 @@ public class EnemyBehaviour : MonoBehaviour
 
     private NavMeshAgent agent;
     public GameObject player;
+    NavMeshController controller;
     
     public Transform[] PatrolPoints;
     private int currentPatrolPoint = 0;
@@ -49,6 +50,8 @@ public class EnemyBehaviour : MonoBehaviour
     
     void Start() {
         agent = this.GetComponent<NavMeshAgent>(); 
+        controller = GetComponentInParent<NavMeshController>();
+        
         //Debug.Log(agent);
         //Debug.Break();
         
@@ -60,8 +63,7 @@ public class EnemyBehaviour : MonoBehaviour
                     // Returns if no points have been set up
             if (PatrolPoints.Length == 0)
                 return;
-
-          NavMeshController controller = GetComponentInParent<NavMeshController>();
+   
         controller.NavMeshProvider(PatrolPoints[currentPatrolPoint].position);
         
             // Set the agent to go to the currently selected destination.   
@@ -96,10 +98,10 @@ public class EnemyBehaviour : MonoBehaviour
             if (playerHasObj) {   
                 Vector3 dirToPlayer = transform.position - player.transform.position;
                 Vector3 newPos = transform.position + dirToPlayer;
-                     agent.SetDestination(newPos);
+                 controller.NavMeshProvider(newPos);
             // If player hasn't picked up object, enemy will run towards player and chase him
             } else {                     
-                agent.SetDestination(player.transform.position);
+                controller.NavMeshProvider(player.transform.position);
             }
         
         // If the player is too far from enemy  
