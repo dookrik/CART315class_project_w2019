@@ -44,15 +44,15 @@ public class NavMeshController : MonoBehaviour
     public  void NavMeshProvider(Vector3 destination)
     {
         //agent.velocity = locomotionCtl.controller.velocity;
-        agent.velocity = rigidb.velocity;
+        //agent.velocity = rigidb.velocity;
         //agent.Warp(this.transform.position);
 
         agent.SetDestination(destination);
 
-        this.transform.position += Vector3.Normalize(agent.steeringTarget - this.transform.position) * 0.1f;
-
-        if (Vector3.Distance(this.transform.position, destination) > 0.1f)
-            locomotionCtl.Locomote(Vector3.Normalize(agent.steeringTarget - this.transform.position));
+//        this.transform.position += Vector3.Normalize(agent.steeringTarget - this.transform.position) * 0.1f;
+//
+//        if (Vector3.Distance(this.transform.position, destination) > 0.1f)
+//            locomotionCtl.Locomote(Vector3.Normalize(agent.steeringTarget - this.transform.position));
     }
 
 

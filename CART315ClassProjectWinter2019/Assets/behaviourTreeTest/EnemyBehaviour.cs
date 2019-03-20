@@ -35,7 +35,7 @@ public class EnemyBehaviour : MonoBehaviour
     */
     
 
-    public NavMeshAgent enemyAgent;
+    private NavMeshAgent agent;
     public GameObject player;
     
     public Transform[] PatrolPoints;
@@ -47,8 +47,10 @@ public class EnemyBehaviour : MonoBehaviour
     // If player does not have object, enemy chases him
     public bool playerHasObj = false;
     
-    void start() {
-         //enemyAgent.autoBraking = false;
+    void Start() {
+        agent = this.GetComponent<NavMeshAgent>(); 
+        //Debug.Log(agent);
+        //Debug.Break();
         
         // Enemy starts his round
         GoToNextPoint();
@@ -59,8 +61,11 @@ public class EnemyBehaviour : MonoBehaviour
             if (PatrolPoints.Length == 0)
                 return;
 
+          NavMeshController controller = GetComponentInParent<NavMeshController>();
+        controller.NavMeshProvider(PatrolPoints[currentPatrolPoint].position);
+        
             // Set the agent to go to the currently selected destination.   
-enemyAgent.SetDestination(PatrolPoints[currentPatrolPoint].position);
+//agent.SetDestination(PatrolPoints[currentPatrolPoint].position);
 
             // Choose the next point in the array as the destination,
             // cycling to the start if necessary.
@@ -91,17 +96,17 @@ enemyAgent.SetDestination(PatrolPoints[currentPatrolPoint].position);
             if (playerHasObj) {   
                 Vector3 dirToPlayer = transform.position - player.transform.position;
                 Vector3 newPos = transform.position + dirToPlayer;
-                     enemyAgent.SetDestination(newPos);
+                     agent.SetDestination(newPos);
             // If player hasn't picked up object, enemy will run towards player and chase him
-            } else {                     enemyAgent.SetDestination(player.transform.position);
+            } else {                     
+                agent.SetDestination(player.transform.position);
             }
         
         // If the player is too far from enemy  
         } else {
             // When enemy has reached one patrol point, go to the next one                          
-                if (!enemyAgent.pathPending && enemyAgent.remainingDistance < 0.5f) GoToNextPoint();                           
+                if (!agent.pathPending && agent.remainingDistance < 0.5f) GoToNextPoint();                           
     }
-
 }
     
 }
