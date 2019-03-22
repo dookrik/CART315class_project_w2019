@@ -30,7 +30,7 @@ Material:
     m_Floats:
     - _Inside: 0.45
     - _Rim: 1.12
-    - _Speed: 0.61
+    - _Speed: 0.69
     - _Strength: 3.21
     - _Tile: 1
     m_Colors:
