@@ -4,41 +4,40 @@ using UnityEngine;
 
 public class BubbleEntrance : MonoBehaviour
 {
-    public Camera Cam;
+    private Camera Cam;
     public GameObject MaskZone;
-    public GameObject innerDome;
+    public GameObject DomeMask;
+    public GameObject title;
     RaycastHit hit;
     private int counter;
     private Ray rayOrigin;
 
     private void Start()
     {
-        innerDome.SetActive(false);
-        print((GetComponent<Renderer>().bounds.extents.x- (MaskZone.GetComponent<Renderer>().bounds.extents.z / 2))-0.2);
+        Cam = GameObject.Find("Camera_Become").GetComponent<Camera>();
+        title.SetActive(false);
+        MaskZone.transform.localPosition = new Vector3(0,0,-(GetComponent<Renderer>().bounds.extents.x - (MaskZone.GetComponent<Renderer>().bounds.extents.z / 2)) + 0.4f);
         counter = 0;
     }
 
 
     private void FixedUpdate()
     {
-        rayOrigin = Cam.ViewportPointToRay(new Vector3(0.5F, 0.5F, 0));
-        Debug.DrawRay(rayOrigin.origin, rayOrigin.direction * 10, Color.red);
         if(counter == 2)
         {
             StartCoroutine(Delay(1));
         }
-        if(counter > 2)
+        if (Cam == null)
         {
-            rayOrigin.direction = -rayOrigin.direction;
-
+            Cam = GameObject.Find("Camera_Become").GetComponent<Camera>();
         }
+
     }
 
     IEnumerator Delay(float waitTime)
     {
         yield return new WaitForSeconds(waitTime);
         //code executes after the waitTime is elapsed 
-        innerDome.SetActive(true);
         MaskZone.transform.localScale = new Vector3(0, 0, 0);
         counter++;
     }
@@ -48,7 +47,6 @@ public class BubbleEntrance : MonoBehaviour
     {
         if (other.gameObject == Cam.transform.parent.gameObject)
         {
-            print("enter");
             counter++;
         }
 
@@ -61,24 +59,47 @@ public class BubbleEntrance : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (Physics.Raycast(rayOrigin, out hit, 10.0f))
+        if (other.gameObject == Cam.transform.parent.gameObject)
         {
-            print(hit.collider.gameObject);
-            if (hit.collider.gameObject.name == "Dome")
-            {
-                OpenEntrance();
+            rayOrigin = Cam.ViewportPointToRay(new Vector3(0.5F, 0.5F, 0));
+            Debug.DrawRay(Cam.transform.parent.gameObject.transform.position, Cam.transform.parent.gameObject.transform.forward * 10, Color.red);
 
-            }
-            if (hit.collider.gameObject.name == "InnerDome")
+            if (Physics.Raycast(Cam.transform.parent.gameObject.transform.position, Cam.transform.parent.gameObject.transform.forward, out hit, 10.0f))
             {
-               // OpenEntrance();
+                //print(hit.collider.gameObject);
+                if (hit.collider.gameObject.name == "DomeMaterial")
+                {
+                    Vector3 localTarget = transform.InverseTransformPoint(Cam.transform.parent.gameObject.transform.position);
+
+                    float y_angle = Mathf.Atan2(localTarget.x, localTarget.z) * Mathf.Rad2Deg;
+                    float x_angle = Mathf.Atan2(localTarget.y, localTarget.z) * Mathf.Rad2Deg;
+
+                    y_angle += 180;
+                    y_angle = (y_angle > 180) ? y_angle - 360 : y_angle;
+                    x_angle += 180;
+                    x_angle = (x_angle > 180) ? x_angle - 360 : x_angle;
+                    DomeMask.transform.eulerAngles = new Vector3(-x_angle, y_angle, 0);
+
+                    if (1 / hit.distance < 1)
+                    {
+                        OpenEntrance();
+                    }
+                }
             }
         }
     }
 
     private void OpenEntrance()
     {
-        print(1 / hit.distance);
+        //print(1 / hit.distance);
+        if (1 / hit.distance >= 0.2f)
+        {
+            title.SetActive(true);
+        }
+        else
+        {
+            title.SetActive(false);
+        }
 
         float x = 0;
         float y = 0;
@@ -103,17 +124,9 @@ public class BubbleEntrance : MonoBehaviour
             z = 10;
         }
 
-        if (y > 0.35f)
+        if (y > 0.25f)
         {
-            y = 0.35f;
-        }
-        if (hit.distance <= 0.15f)
-        {
-            Cam.nearClipPlane = 0.8f;
-        }
-        else
-        {
-            Cam.nearClipPlane = 0.2f;
+            y = 0.25f;
         }
 
         MaskZone.transform.localScale = new Vector3(x, y, z);
