@@ -10,6 +10,7 @@ TagManager:
   - Large
   - Medium
   - PatrolPoints
+  - Ground
   layers:
   - Default
   - TransparentFX

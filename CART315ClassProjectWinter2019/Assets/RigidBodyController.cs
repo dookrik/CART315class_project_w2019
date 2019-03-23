@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class RigidBodyController : MonoBehaviour
 {
-    //following ironequals tut for reference -- https://medium.com/ironequal/unity-character-controller-vs-rigidbody-a1e243591483 and https://docs.huihoo.com/unity/3.3/Documentation/ScriptReference/Input.GetAxis.html
+    //following ironequals tut for reference -- https://medium.com/ironequal/unity-character-controller-vs-rigidbody-a1e243591483 and https://docs.huihoo.com/unity/3.3/Documentation/ScriptReference/Input.GetAxis.html and https://www.noob-programmer.com/unity3d/how-to-make-player-object-jump-in-unity-3d/
 
     private Rigidbody characterBod;
     public float speed = 2f;
+    public float jumpSpeed = 5f;
 
     private Vector3 movementdirection;
     bool rotating = false;
@@ -15,6 +16,7 @@ public class RigidBodyController : MonoBehaviour
     private float rotateXAxis = 0.0f;
     private float rotateYAxis = 0.0f;
 
+    public bool isGrounded;
 
     // Start is called before the first frame update
     void Start()
@@ -63,6 +65,22 @@ public class RigidBodyController : MonoBehaviour
         {
             rotating = false;
             characterBod.transform.eulerAngles = new Vector3(rotateXAxis, rotateYAxis, 0);
+        }
+    }
+    public void Jump()
+    {
+        if (isGrounded)
+        {
+            characterBod.AddForce(new Vector3(0, 2, 0) * jumpSpeed, ForceMode.Impulse);
+            isGrounded = false;
+        }
+       
+    }
+    void OnCollisionEnter(Collision col)
+    {
+        if (col.gameObject.tag == ("Ground") && isGrounded == false)
+        {
+            isGrounded = true;
         }
     }
 

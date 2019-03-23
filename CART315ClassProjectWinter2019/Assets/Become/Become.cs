@@ -68,6 +68,11 @@ public class Become : MonoBehaviour
 
         controller.Locomote(new Vector3(horizontal, 0, vertical));
 
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            controller.Jump();
+        }
+
         if (Input.GetMouseButtonDown(0))
         {
             //become other player on left click
