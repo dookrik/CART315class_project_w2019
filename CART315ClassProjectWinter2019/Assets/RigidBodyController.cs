@@ -20,6 +20,8 @@ public class RigidBodyController : MonoBehaviour
     void Start()
     {
         characterBod = GetComponent<Rigidbody>();
+        rotateXAxis = characterBod.transform.eulerAngles.x;
+        rotateYAxis = characterBod.transform.eulerAngles.y;
     }
 
     public void Locomote(Vector3 direction)

@@ -21,8 +21,8 @@ public class Become : MonoBehaviour
 
     //Action Scripts
     //public Spawner actionSpawn;
-    public Pickupper2 actionPickup;
-    public Eat actionEat;
+    private Pickupper actionPickup;
+    private Eat actionEat;
     private Throw actionThrow;
 
 
@@ -99,11 +99,13 @@ public class Become : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.P))
         {
             //call pickup function
+            actionPickup = GetComponentInParent<Pickupper>();
             actionPickup.PickUp();
         }
         if (Input.GetKeyDown(KeyCode.E))
         {
             //call eat function
+            actionEat = GetComponentInParent<Eat>();
             actionEat.EatFood();
 
         }

@@ -193,7 +193,7 @@ PrefabInstance:
         type: 3}
       propertyPath: actionPickup
       value: 
-      objectReference: {fileID: 1975754065}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e0320419361f846a099ce5ea427ba781, type: 3}
 --- !u!4 &322300283 stripped
@@ -215,6 +215,7 @@ GameObject:
   - component: {fileID: 705997747}
   - component: {fileID: 705997746}
   - component: {fileID: 705997745}
+  - component: {fileID: 705997750}
   m_Layer: 0
   m_Name: Food
   m_TagString: pickupable
@@ -236,7 +237,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 122
   m_CollisionDetection: 0
 --- !u!65 &705997746
 BoxCollider:
@@ -310,6 +311,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &705997750
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 705997744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 158624a4c411b459da3280d33ad5cb62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &750741475
 GameObject:
   m_ObjectHideFlags: 0
@@ -322,7 +335,11 @@ GameObject:
   - component: {fileID: 750741478}
   - component: {fileID: 750741477}
   - component: {fileID: 750741476}
+  - component: {fileID: 750741481}
   - component: {fileID: 750741480}
+  - component: {fileID: 750741483}
+  - component: {fileID: 750741484}
+  - component: {fileID: 750741482}
   m_Layer: 0
   m_Name: Player2
   m_TagString: Untagged
@@ -398,27 +415,79 @@ Transform:
   m_LocalRotation: {x: 0, y: 0.98939943, z: 0, w: 0.1452197}
   m_LocalPosition: {x: -2.07, y: 1.57, z: 3.01}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1606423245}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 163.3, z: 0}
---- !u!143 &750741480
-CharacterController:
+--- !u!114 &750741480
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 750741475}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86ae51d1f6eb54ed192c8e41f3d6eca5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 2
+--- !u!54 &750741481
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 750741475}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 8
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 80
+  m_CollisionDetection: 0
+--- !u!114 &750741482
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 750741475}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b1fcb51782764532a7462694f491294, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  grabPoint: {fileID: 1606423245}
+--- !u!114 &750741483
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 750741475}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96c2771e5c566488d83bd2e2d61c7bcc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 2
+  duration: 5
+--- !u!135 &750741484
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 750741475}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Height: 1
-  m_Radius: 0.5
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
+  m_Radius: 2.2
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1025262125
 GameObject:
@@ -662,6 +731,36 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1606423244
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1606423245}
+  m_Layer: 0
+  m_Name: Grabpoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1606423245
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1606423244}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.44, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 750741479}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1841623515
 GameObject:
   m_ObjectHideFlags: 0
@@ -766,12 +865,11 @@ GameObject:
   - component: {fileID: 1975754060}
   - component: {fileID: 1975754059}
   - component: {fileID: 1975754058}
-  - component: {fileID: 1975754062}
   - component: {fileID: 1975754064}
   - component: {fileID: 1975754063}
   - component: {fileID: 1975754066}
-  - component: {fileID: 1975754065}
   - component: {fileID: 1975754067}
+  - component: {fileID: 1975754062}
   m_Layer: 0
   m_Name: Player1
   m_TagString: Untagged
@@ -853,24 +951,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 33, z: 0}
---- !u!143 &1975754062
-CharacterController:
+--- !u!114 &1975754062
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1975754057}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Height: 1
-  m_Radius: 0.5
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b1fcb51782764532a7462694f491294, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  grabPoint: {fileID: 2006668342}
 --- !u!54 &1975754063
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -899,21 +992,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86ae51d1f6eb54ed192c8e41f3d6eca5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterBod: {fileID: 1975754063}
   speed: 2
---- !u!114 &1975754065
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1975754057}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8afa773e4c063401bbac3685673cf6f1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  grabPoint: {fileID: 2006668342}
 --- !u!114 &1975754066
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -983,6 +1062,7 @@ GameObject:
   - component: {fileID: 2006910830}
   - component: {fileID: 2006910829}
   - component: {fileID: 2006910828}
+  - component: {fileID: 2006910833}
   - component: {fileID: 2006910832}
   m_Layer: 0
   m_Name: Player3
@@ -1063,21 +1143,32 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
---- !u!143 &2006910832
-CharacterController:
+--- !u!114 &2006910832
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2006910827}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
   m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86ae51d1f6eb54ed192c8e41f3d6eca5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 2
+--- !u!54 &2006910833
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2006910827}
   serializedVersion: 2
-  m_Height: 1
-  m_Radius: 0.5
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Mass: 1
+  m_Drag: 8
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 80
+  m_CollisionDetection: 0
