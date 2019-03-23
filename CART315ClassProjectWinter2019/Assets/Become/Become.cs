@@ -55,13 +55,16 @@ public class Become : MonoBehaviour
         step += 0.25f * Time.deltaTime;
     }
 
+
     //player actions
     private void PlayerActions()
     {
-        float horizontal = Input.GetAxis("Horizontal");
-        float vertical = Input.GetAxis("Vertical");
+        float horizontal = Input.GetAxis("Horizontal") * 10;
+        float vertical = Input.GetAxis("Vertical") * 100;
 
         RigidBodyController controller = GetComponentInParent<RigidBodyController>();
+
+        controller.Rotate();
 
         controller.Locomote(new Vector3(horizontal, 0, vertical));
 
@@ -169,15 +172,7 @@ public class Become : MonoBehaviour
         //make the camera a chid of the clicked game object and center its position relative to the player
         clickedObject.transform.SetParent(hit.collider.gameObject.transform);
         clickedObject.transform.localRotation = Quaternion.Euler(0, 0, 0);
-        
-
-        //enable and disable the LocomotionUserControl - enable on one player at a time
-        //if (hit.collider.gameObject.GetComponentInParent<LocomotionController>() != null)
-        //{
-        //    GetComponentInParent<LocomotionController>().enabled = false;
-        //    hit.collider.gameObject.GetComponentInParent<LocomotionController>().enabled = true;
-        //}
-
+     
         //Destroy the old camera.
         Destroy(gameObject);
     }
