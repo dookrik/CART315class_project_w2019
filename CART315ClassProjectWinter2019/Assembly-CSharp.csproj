@@ -83,7 +83,7 @@
     <Compile Include="Assets\itemActivator.cs" />
     <Compile Include="Assets\ItemActivatorV2.cs" />
     <Compile Include="Assets\keyopen\KeyOpen.cs" />
-    <Compile Include="Assets\keyopen\keyopen_player.cs" />
+    <Compile Include="Assets\keyopen\KeyOpenController.cs" />
     <Compile Include="Assets\NavMeshController.cs" />
     <Compile Include="Assets\Pickupper.cs" />
     <Compile Include="Assets\Projectile.cs" />
