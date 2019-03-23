@@ -47,7 +47,8 @@ public class Usable : MonoBehaviour
         RaycastHit hit;
         // Does the ray intersect any objects excluding the player layer
         //Raycast is used to detect the front of the player 
-        if (Physics.Raycast(transform.parent.parent.position, transform.forward, out hit, maxDistance))
+        Debug.DrawRay(transform.parent.parent.position, transform.parent.parent.forward, Color.cyan, 1.0f);
+        if (Physics.Raycast(transform.parent.parent.position, transform.parent.parent.forward, out hit, maxDistance))
         {
             UseTarget TargetUse = hit.collider.gameObject.GetComponent<UseTarget>();
             if (TargetUse != null)
