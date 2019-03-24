@@ -42,7 +42,7 @@ public class Become : MonoBehaviour
         PlayerActions();
 
         //turn the camera towards the clicked object and make sure it's a player
-        if (hit.collider != null && hit.collider.gameObject.GetComponentInParent<RigidBodyController>() != null)
+        if (hit.collider != null && hit.collider.gameObject.GetComponentInParent<RigidBodyController>() != null && hit.collider.gameObject.tag == "Player")
         {
             Vector3 direction = hit.collider.gameObject.transform.position - transform.position;
             if (direction != Vector3.zero)
@@ -147,7 +147,7 @@ public class Become : MonoBehaviour
         Ray rayEnd = fpsCam.ScreenPointToRay(Input.mousePosition);
 
         //if the mouse clicks on the gameobject and that gameobject has a CharacterController as a component, meaning that object is a player
-        if (Physics.Raycast(rayEnd, out hit, clickRange) && hit.collider.gameObject.GetComponentInParent<RigidBodyController>() != null)
+        if (Physics.Raycast(rayEnd, out hit, clickRange) && hit.collider.gameObject.GetComponentInParent<RigidBodyController>() != null && hit.collider.gameObject.tag == "Player")
         {
             //setting the audio source component to the new gameobject (player)
             setAudioSource();

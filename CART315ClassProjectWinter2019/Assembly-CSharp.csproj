@@ -68,6 +68,7 @@
     <Compile Include="Assets\Break\BreakInTriangles.cs" />
     <Compile Include="Assets\Break\Destructible.cs" />
     <Compile Include="Assets\BubbleIslandTeam\scripts\BubbleEntrance.cs" />
+    <Compile Include="Assets\BubbleIslandTeam\scripts\BubbleVehicle.cs" />
     <Compile Include="Assets\BubbleIslandTeam\scripts\SetRenderQueue.cs" />
     <Compile Include="Assets\Combust\Combust.cs" />
     <Compile Include="Assets\Combust\NewBehaviourScript.cs" />

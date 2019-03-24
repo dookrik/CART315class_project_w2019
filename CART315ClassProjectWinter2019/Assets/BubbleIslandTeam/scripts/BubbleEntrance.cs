@@ -10,7 +10,6 @@ public class BubbleEntrance : MonoBehaviour
     public GameObject title;
     RaycastHit hit;
     private int counter;
-    private Ray rayOrigin;
 
     private void Start()
     {
@@ -61,13 +60,12 @@ public class BubbleEntrance : MonoBehaviour
     {
         if (other.gameObject == Cam.transform.parent.gameObject)
         {
-            rayOrigin = Cam.ViewportPointToRay(new Vector3(0.5F, 0.5F, 0));
             Debug.DrawRay(Cam.transform.parent.gameObject.transform.position, Cam.transform.parent.gameObject.transform.forward * 10, Color.red);
 
             if (Physics.Raycast(Cam.transform.parent.gameObject.transform.position, Cam.transform.parent.gameObject.transform.forward, out hit, 10.0f))
             {
-                //print(hit.collider.gameObject);
-                if (hit.collider.gameObject.name == "DomeMaterial")
+                //print(hit.collider.gameObject.name);
+                if (hit.collider.gameObject.name == "DomeMaterial" || hit.collider.gameObject.name == "Dome")
                 {
                     Vector3 localTarget = transform.InverseTransformPoint(Cam.transform.parent.gameObject.transform.position);
 
