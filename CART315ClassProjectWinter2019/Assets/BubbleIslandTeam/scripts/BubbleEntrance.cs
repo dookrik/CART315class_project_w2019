@@ -8,6 +8,7 @@ public class BubbleEntrance : MonoBehaviour
     public GameObject MaskZone;
     public GameObject DomeMask;
     public GameObject title;
+    public GameObject Vehicle;
     RaycastHit hit;
     private int counter;
 
@@ -22,10 +23,6 @@ public class BubbleEntrance : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if(counter == 2)
-        {
-            StartCoroutine(Delay(1));
-        }
         if (Cam == null)
         {
             Cam = GameObject.Find("Camera_Become").GetComponent<Camera>();
@@ -33,19 +30,16 @@ public class BubbleEntrance : MonoBehaviour
 
     }
 
-    IEnumerator Delay(float waitTime)
-    {
-        yield return new WaitForSeconds(waitTime);
-        //code executes after the waitTime is elapsed 
-        MaskZone.transform.localScale = new Vector3(0, 0, 0);
-        counter++;
-    }
-
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject == Cam.transform.parent.gameObject)
         {
+            counter++;
+        }
+        if(counter == 2)
+        {
+            MaskZone.transform.localScale = new Vector3(0, 0, 0);
+            Instantiate(Vehicle, new Vector3(MaskZone.transform.position.x, MaskZone.transform.position.y + 1.2f, MaskZone.transform.position.z), Quaternion.identity);
             counter++;
         }
 

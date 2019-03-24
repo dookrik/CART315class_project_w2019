@@ -209,4 +209,9 @@ public class Become : MonoBehaviour
         audioSource.PlayOneShot(swapSound, 0.8f);
     }
 
+    public int GetCamMode()
+    {
+        return CamMode;
+    }
+
 }

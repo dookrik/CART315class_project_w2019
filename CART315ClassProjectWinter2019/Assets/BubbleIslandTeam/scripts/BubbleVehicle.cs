@@ -11,7 +11,6 @@ public class BubbleVehicle : MonoBehaviour
     void Start()
     {
         Cam = GameObject.Find("Camera_Become").GetComponent<Camera>();
-
     }
 
     // Update is called once per frame
@@ -48,7 +47,22 @@ public class BubbleVehicle : MonoBehaviour
         {
             print("Inside bubble");
             Cam.gameObject.transform.parent.parent = gameObject.transform;
+            if(Cam.gameObject.GetComponent<Become>().GetCamMode() == 1)
+            {
+                Cam.gameObject.transform.localPosition = new Vector3(0, 0, 0);
+            }
+            else
+            {
+                Cam.gameObject.transform.localPosition = new Vector3(0, 1, -1);
+            }
             Cam.gameObject.transform.parent = gameObject.transform;
+            foreach (Transform child in transform)
+            {
+                if (child.tag == "Player")
+                {
+                    child.transform.localPosition = new Vector3(0, child.transform.localPosition.y, 0);
+                }
+            }
         }
 
     }
