@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/BubbleIslandTeam/BubbleIsland.unity
+- path: Assets/behaviourTreeTest/behaviourTreeTest.unity
   isLoaded: 1
   isActive: 1

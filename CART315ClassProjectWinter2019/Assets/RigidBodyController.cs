@@ -45,7 +45,7 @@ public class RigidBodyController : MonoBehaviour
         direction.x *= speed * Time.deltaTime;
 
         // Move translation along the object's z-axis
-        transform.Translate(direction.x, 0, direction.z);
+        transform.position += new Vector3(direction.x, 0, direction.z);
         // Rotate around our y-axis
         transform.Rotate(0, direction.x, 0);
 
