@@ -601,7 +601,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     randomizeRotationDirection: 0
-    maxNumParticles: 50
+    maxNumParticles: 10
     size3D: 0
     rotation3D: 0
     gravityModifier:
@@ -976,7 +976,7 @@ ParticleSystem:
       countCurve:
         serializedVersion: 2
         minMaxState: 0
-        scalar: 10
+        scalar: 5
         minScalar: 30
         maxCurve:
           serializedVersion: 2
@@ -1041,21 +1041,21 @@ ParticleSystem:
         m_Curve:
         - serializedVersion: 3
           time: 0
-          value: 0
-          inSlope: 1
-          outSlope: 1
+          value: 0.020507812
+          inSlope: 0.6597582
+          outSlope: 0.6597582
           tangentMode: 34
           weightedMode: 0
           inWeight: 0
-          outWeight: 0
+          outWeight: 0.33333334
         - serializedVersion: 3
-          time: 1
-          value: 1
-          inSlope: 1
-          outSlope: 1
+          time: 0.9949341
+          value: 0.67692375
+          inSlope: 0.6597582
+          outSlope: 0.6597582
           tangentMode: 34
           weightedMode: 0
-          inWeight: 0
+          inWeight: 0.33333334
           outWeight: 0
         m_PreInfinity: 2
         m_PostInfinity: 2
@@ -1379,7 +1379,7 @@ ParticleSystem:
         ctime6: 0
         ctime7: 0
         atime0: 0
-        atime1: 32768
+        atime1: 10216
         atime2: 65535
         atime3: 65535
         atime4: 0
@@ -4713,8 +4713,8 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 7fea4e7bea5eb4f4ea23bdad0bfc322e, type: 2}
-  - {fileID: 2100000, guid: 7fea4e7bea5eb4f4ea23bdad0bfc322e, type: 2}
+  - {fileID: 2100000, guid: 3e1d86a136fe94c40a4dc07a8814a2ef, type: 2}
+  - {fileID: 2100000, guid: 3e1d86a136fe94c40a4dc07a8814a2ef, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4737,7 +4737,7 @@ ParticleSystemRenderer:
   m_RenderMode: 0
   m_SortMode: 0
   m_MinParticleSize: 0
-  m_MaxParticleSize: 3
+  m_MaxParticleSize: 1
   m_CameraVelocityScale: 0
   m_VelocityScale: 0
   m_LengthScale: 2
@@ -4766,7 +4766,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5542859898536417900}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 05eb18a8ef3f230498f8d5a82d89d888, type: 3}
+  m_Script: {fileID: 11500000, guid: f61a47d12008c42d7a0c4a8e92f085f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   destroyTime: 3

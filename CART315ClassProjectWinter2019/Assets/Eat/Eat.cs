@@ -19,7 +19,7 @@ public class Eat : MonoBehaviour
 {
     public float speed = 2f;
     public float duration = 5f;
-    private Pickupper2 myFood;
+    private Pickupper myFood;
     Transform foodLoc;
 
     void FixedUpdate()
@@ -29,8 +29,7 @@ public class Eat : MonoBehaviour
 
     public void EatFood()
     {
-
-        myFood = GameObject.Find("Player1").GetComponent<Pickupper2>();
+        myFood = GetComponentInParent<Pickupper>();
 
         if (myFood.IsHoldingObject())
         {
@@ -38,14 +37,12 @@ public class Eat : MonoBehaviour
             foodLoc = myFood.grabPoint;
             foreach (Transform child in foodLoc)
             {
-                Vector3 foodSize = child.gameObject.transform.localScale;
-                StartCoroutine(EatTheShit(child, foodSize, duration));
-                //Eatable eatable = child.GetComponent<Eatable>();
-                //if (child.gameObject != null && eatable != null)
-                //{
-                //    Vector3 foodSize = child.gameObject.transform.localScale;
-                //    StartCoroutine(EatTheShit(child, foodSize, duration));
-                //}
+                Eatable eatable = child.GetComponent<Eatable>();
+                if (child.gameObject != null && eatable != null)
+                {
+                    Vector3 foodSize = child.gameObject.transform.localScale;
+                    StartCoroutine(EatTheShit(child, foodSize, duration));
+                }
             }
 
         }

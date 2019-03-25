@@ -20,11 +20,10 @@ public class Become : MonoBehaviour
     private AudioSource audioSource;
 
     //Action Scripts
-    //public Usable actionUse;
     //public Spawner actionSpawn;
-    public Pickupper2 actionPickup;
-    public Eat actionEat;
-    //public Throw actionThrow;
+    private Pickupper actionPickup;
+    private Eat actionEat;
+    private Throw actionThrow;
 
 
     void Start()
@@ -32,6 +31,7 @@ public class Become : MonoBehaviour
         fpsCam = GetComponent<Camera>();
         firstCamPosition = GetComponent<Transform>().localPosition;
         thirdCamPosition = firstCamPosition + new Vector3(0,5,-5);
+        actionThrow = GetComponent<Throw>();
         
         //setting the audio sound component
         setAudioSource();
@@ -42,7 +42,7 @@ public class Become : MonoBehaviour
         PlayerActions();
 
         //turn the camera towards the clicked object and make sure it's a player
-        if (hit.collider != null && hit.collider.gameObject.GetComponentInParent<RigidBodyController>() != null)
+        if (hit.collider != null && hit.collider.gameObject.GetComponentInParent<RigidBodyController>() != null && hit.collider.gameObject.tag == "Player")
         {
             Vector3 direction = hit.collider.gameObject.transform.position - transform.position;
             if (direction != Vector3.zero)
@@ -55,15 +55,23 @@ public class Become : MonoBehaviour
         step += 0.25f * Time.deltaTime;
     }
 
+
     //player actions
     private void PlayerActions()
     {
-        float horizontal = Input.GetAxis("Horizontal");
-        float vertical = Input.GetAxis("Vertical");
+        float horizontal = Input.GetAxis("Horizontal") * 10;
+        float vertical = Input.GetAxis("Vertical") * 100;
 
         RigidBodyController controller = GetComponentInParent<RigidBodyController>();
 
+        controller.Rotate();
+
         controller.Locomote(new Vector3(horizontal, 0, vertical));
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            controller.Jump();
+        }
 
         if (Input.GetMouseButtonDown(0))
         {
@@ -80,7 +88,14 @@ public class Become : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.U))
         {
-            //call use function
+            if (actionPickup && actionPickup.IsHoldingObject())
+            {
+                Usable usable = actionPickup.HeldObject().GetComponent<Usable>();
+                if (usable)
+                {
+                    usable.Use();
+                }
+            }
         }
         if (Input.GetKeyDown(KeyCode.I))
         {
@@ -89,17 +104,22 @@ public class Become : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.P))
         {
             //call pickup function
+            actionPickup = GetComponentInParent<Pickupper>();
             actionPickup.PickUp();
         }
         if (Input.GetKeyDown(KeyCode.E))
         {
             //call eat function
+            actionEat = GetComponentInParent<Eat>();
             actionEat.EatFood();
 
         }
         if (Input.GetKeyDown(KeyCode.T))
         {
-            //call throw function
+            if (actionPickup && actionThrow && actionPickup.IsHoldingObject())
+            {
+                actionThrow.ThrowObject();
+            }
         }
         //... more actions
     }
@@ -127,7 +147,7 @@ public class Become : MonoBehaviour
         Ray rayEnd = fpsCam.ScreenPointToRay(Input.mousePosition);
 
         //if the mouse clicks on the gameobject and that gameobject has a CharacterController as a component, meaning that object is a player
-        if (Physics.Raycast(rayEnd, out hit, clickRange) && hit.collider.gameObject.GetComponentInParent<RigidBodyController>() != null)
+        if (Physics.Raycast(rayEnd, out hit, clickRange) && hit.collider.gameObject.GetComponentInParent<RigidBodyController>() != null && hit.collider.gameObject.tag == "Player")
         {
             //setting the audio source component to the new gameobject (player)
             setAudioSource();
@@ -159,15 +179,7 @@ public class Become : MonoBehaviour
         //make the camera a chid of the clicked game object and center its position relative to the player
         clickedObject.transform.SetParent(hit.collider.gameObject.transform);
         clickedObject.transform.localRotation = Quaternion.Euler(0, 0, 0);
-        
-
-        //enable and disable the LocomotionUserControl - enable on one player at a time
-        //if (hit.collider.gameObject.GetComponentInParent<LocomotionController>() != null)
-        //{
-        //    GetComponentInParent<LocomotionController>().enabled = false;
-        //    hit.collider.gameObject.GetComponentInParent<LocomotionController>().enabled = true;
-        //}
-
+     
         //Destroy the old camera.
         Destroy(gameObject);
     }
@@ -195,6 +207,11 @@ public class Become : MonoBehaviour
     {
         //play the sound fx        
         audioSource.PlayOneShot(swapSound, 0.8f);
+    }
+
+    public int GetCamMode()
+    {
+        return CamMode;
     }
 
 }

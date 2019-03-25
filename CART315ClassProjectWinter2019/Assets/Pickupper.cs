@@ -35,7 +35,7 @@ public class Pickupper : MonoBehaviour
         //if someone presses the button this parents the pickupable to the selected empty.
         if (buttonDown)
         {
-            if (inRange)
+            if (inRange && pickup.gameObject != null)
             {
                 pickup.GetComponent<Rigidbody>().useGravity = false;
                 pickup.transform.position = grabPoint.transform.position;
@@ -66,7 +66,7 @@ public class Pickupper : MonoBehaviour
             }    
         }
     }
-    
+
     //This function will activate a pickup of the nearest object within range.
     //IE Input.GetButtonDown(myButtonName) {Pickupper1.buttonCheck()}
     public void ButtonCheck()
@@ -96,12 +96,15 @@ public class Pickupper : MonoBehaviour
             float nearestDist = Mathf.Infinity;
 
             foreach (GameObject obj in pickups){
-                Vector3 dist = obj.transform.position - currentPosition;
-                float distSqr = dist.sqrMagnitude;
-                if (distSqr < nearestDist)
+                if (obj.gameObject != null)
                 {
-                    nearestDist = distSqr;
-                    pickup = obj;
+                    Vector3 dist = obj.transform.position - currentPosition;
+                    float distSqr = dist.sqrMagnitude;
+                    if (distSqr < nearestDist)
+                    {
+                        nearestDist = distSqr;
+                        pickup = obj;
+                    }
                 }
             }
 
@@ -112,7 +115,7 @@ public class Pickupper : MonoBehaviour
      }
 
     //Debug button fire
-    private void OnMouseDown()
+    public void PickUp()
     {
         ButtonCheck();
     }
@@ -125,5 +128,12 @@ public class Pickupper : MonoBehaviour
     public GameObject HeldObject()
     {
         return pickup;
+    }
+    //EAT added the function DigestTheFood() in order to keep things private
+    public void DigestTheFood()
+    {
+        isHolding = false;
+        buttonDown = false;
+        pickup = null;
     }
 }
