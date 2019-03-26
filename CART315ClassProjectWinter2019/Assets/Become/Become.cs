@@ -59,14 +59,14 @@ public class Become : MonoBehaviour
     //player actions
     private void PlayerActions()
     {
-        float horizontal = Input.GetAxis("Horizontal") * 10;
-        float vertical = Input.GetAxis("Vertical") * 100;
+        float horizontal = Input.GetAxis("Horizontal");
+        float vertical = Input.GetAxis("Vertical");
 
         RigidBodyController controller = GetComponentInParent<RigidBodyController>();
 
+        controller.Locomote(new Vector3(horizontal, 0, vertical));
         controller.Rotate();
 
-        controller.Locomote(new Vector3(horizontal, 0, vertical));
 
         if (Input.GetKeyDown(KeyCode.Space))
         {

@@ -10,9 +10,6 @@ public class RigidBodyController : MonoBehaviour
     public float speed = 2f;
     public float jumpSpeed = 5f;
 
-    private Vector3 movementdirection;
-    bool rotating = false;
-
     private float rotateXAxis = 0.0f;
     private float rotateYAxis = 0.0f;
 
@@ -30,41 +27,35 @@ public class RigidBodyController : MonoBehaviour
     {
         direction.y = 0;
 
-        if (direction.magnitude > 0.01f)
-        {
-            rotating = true;
-        }
-        else
-        {
-            rotating = false;
-        }
-
         direction = direction.normalized;
       
         direction.z *= speed * Time.deltaTime;
         direction.x *= speed * Time.deltaTime;
 
-        // Move translation along the object's z-axis
-        transform.position += new Vector3(direction.x, 0, direction.z);
-        // Rotate around our y-axis
-        transform.Rotate(0, direction.x, 0);
+        characterBod.transform.position += transform.right * direction.x;
+        characterBod.transform.position += transform.forward * direction.z;
 
-        movementdirection = direction;
     }
+
+
     public void Rotate()
     {
         if (Input.GetMouseButton(0))
         {
             rotateYAxis += 3 * Input.GetAxis("Mouse X");
             rotateXAxis += 3 * Input.GetAxis("Mouse Y");
+        }
+        characterBod.transform.rotation = Quaternion.Euler(0, rotateYAxis, 0);
 
-            rotating = true;
-            characterBod.transform.eulerAngles = new Vector3(rotateXAxis, rotateYAxis, 0);
+        Become cam = GameObject.Find("Camera_Become").GetComponent<Become>();
+
+        if (cam.GetCamMode() == 1)
+        {
+            cam.gameObject.transform.rotation = Quaternion.Euler(rotateXAxis, rotateYAxis, 0);
         }
         else
         {
-            rotating = false;
-            characterBod.transform.eulerAngles = new Vector3(rotateXAxis, rotateYAxis, 0);
+            cam.gameObject.transform.rotation = Quaternion.Euler(33+ rotateXAxis, rotateYAxis, 0);
         }
     }
     public void Jump()
@@ -83,16 +74,5 @@ public class RigidBodyController : MonoBehaviour
             isGrounded = true;
         }
     }
-
-    public void FixedUpdate()
-    {
-        if (rotating)
-        {
-            // Debug.Log(characterBod.velocity.magnitude);
-            characterBod.transform.rotation =
-            Quaternion.RotateTowards(characterBod.transform.rotation, Quaternion.LookRotation(movementdirection, Vector3.up), 10f);
-        }
-    }
-
 
 }
