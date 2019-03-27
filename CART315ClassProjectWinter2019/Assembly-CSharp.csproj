@@ -99,10 +99,10 @@
     <Compile Include="Assets\Use\UseTarget.cs" />
     <Compile Include="Assets\UseController.cs" />
     <None Include="Assets\Behavior script\PseudoCode.txt" />
-    <None Include="Assets\BubbleIslandTeam\materials\DepthMask.shader" />
+    <None Include="Assets\BubbleIslandTeam\shaders\DepthMask.shader" />
     <None Include="Assets\NavMeshComponents-master\ProjectSettings\ProjectVersion.txt" />
     <None Include="Assets\western-props-pack\README.txt" />
-    <None Include="Assets\BubbleIslandTeam\materials\Bubble.shader" />
+    <None Include="Assets\BubbleIslandTeam\shaders\Bubble.shader" />
     <Reference Include="Unity.ProBuilder.AssetIdRemapUtility">
       <HintPath>/Users/martin-john/Documents/GitHub/CART315class_project_w2019/CART315ClassProjectWinter2019/Library/ScriptAssemblies/Unity.ProBuilder.AssetIdRemapUtility.dll</HintPath>
     </Reference>

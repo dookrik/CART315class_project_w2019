@@ -63,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: e3ebe9aee93880e4bbf86e8ff99eb453, type: 2}
+  - {fileID: 2100000, guid: 474b50460b52c4ac0920998efda061b0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -92,10 +92,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 6662406728276785822}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb8d334e219124267af902fb35105881, type: 3}
+  m_Script: {fileID: 11500000, guid: ff6c5d22f48ca41aca39156e386e7bbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_queues: b70b0000
+  Children: []
 --- !u!114 &6662406728276785812
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -105,10 +105,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 6662406728276785822}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1f35cd06b71e44df6bf4d27ebbd6d98a, type: 3}
+  m_Script: {fileID: 11500000, guid: fbe460bc44b0f489684f6fa8ab703538, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Children: []
+  speed: 2
+  jumpSpeed: 5
+  isGrounded: 0
 --- !u!114 &6662406728276785815
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -118,12 +120,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 6662406728276785822}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 86ae51d1f6eb54ed192c8e41f3d6eca5, type: 3}
+  m_Script: {fileID: 11500000, guid: f323062ab68e942a683dae3311fc9b54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
-  jumpSpeed: 0
-  isGrounded: 0
+  m_queues: b80b0000
 --- !u!54 &6662406728276785814
 Rigidbody:
   m_ObjectHideFlags: 0
