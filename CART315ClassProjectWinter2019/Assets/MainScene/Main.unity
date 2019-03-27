@@ -319,6 +319,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2
+  jumpSpeed: 5
+  isGrounded: 0
 --- !u!54 &369480263
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -421,7 +423,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a9b274a5be60410d862069cb66e60cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyAgent: {fileID: 369480269}
   player: {fileID: 1497663621}
   PatrolPoints:
   - {fileID: 1616250168}
@@ -1034,6 +1035,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2
+  jumpSpeed: 5
+  isGrounded: 0
 --- !u!54 &1476940067
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1157,6 +1160,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2
+  jumpSpeed: 5
+  isGrounded: 0
 --- !u!54 &1497663623
 Rigidbody:
   m_ObjectHideFlags: 0
