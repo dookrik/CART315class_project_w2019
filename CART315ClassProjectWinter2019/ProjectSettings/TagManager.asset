@@ -12,6 +12,7 @@ TagManager:
   - PatrolPoints
   - Ground
   - Dome
+  - Boid
   layers:
   - Default
   - TransparentFX

@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/behaviourTreeTest/behaviourTreeTest.unity
+- path: Assets/buoyancy test 2.unity
   isLoaded: 1
   isActive: 1
