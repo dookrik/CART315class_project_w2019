@@ -8,7 +8,7 @@ public class EnemyRepel : MonoBehaviour
     
  /* THIS IS PART OF THE ENEMY BEHAVIOUR SERIES BY MARIE-ÈVE.
 
-    The enemy is chasing the player when he gets too close.
+    The enemy is running away from the player when he gets too close.
      
      Please refer to the scene "EnemyBehaviourTest" in order to see this script in live action.
      
