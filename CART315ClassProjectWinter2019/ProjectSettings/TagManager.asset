@@ -13,6 +13,7 @@ TagManager:
   - Ground
   - Dome
   - Boid
+  - ActivePlayer
   layers:
   - Default
   - TransparentFX
