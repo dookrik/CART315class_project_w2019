@@ -224,9 +224,13 @@ MonoBehaviour:
   explosionRadius: 4
   explosionUpward: 0.4
   removeDelay: 3
+  eternalBurn: 1
   temperature: 0
+  maxTemperature: 10
+  conductiveness: 1
   particles: {fileID: 8773976866846825063, guid: 2c46fb1f05565b041b9a1245f0bdb1f8,
     type: 3}
+  buoyancy: {fileID: 0}
 --- !u!54 &443193988
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -277,7 +281,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d23ccb8fc867b458db90465b07f0303d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upLift: {x: 0, y: 14, z: 0}
+  upLift: {x: 0, y: 9.8, z: 0}
   rb: {fileID: 0}
   viscosity: 1
   drag: 1.5
@@ -373,9 +377,13 @@ MonoBehaviour:
   explosionRadius: 4
   explosionUpward: 0.4
   removeDelay: 3
+  eternalBurn: 0
   temperature: 0
+  maxTemperature: 10
+  conductiveness: 1
   particles: {fileID: 8773976866846825063, guid: 2c46fb1f05565b041b9a1245f0bdb1f8,
     type: 3}
+  buoyancy: {fileID: 0}
 --- !u!54 &572327241
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -434,9 +442,13 @@ MonoBehaviour:
   explosionRadius: 4
   explosionUpward: 0.4
   removeDelay: 3
-  temperature: 0
+  eternalBurn: 0
+  temperature: 1
+  maxTemperature: 10
+  conductiveness: 1
   particles: {fileID: 8773976866846825063, guid: 2c46fb1f05565b041b9a1245f0bdb1f8,
     type: 3}
+  buoyancy: {fileID: 0}
 --- !u!136 &588678955
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -522,7 +534,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d23ccb8fc867b458db90465b07f0303d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upLift: {x: 0, y: 14, z: 0}
+  upLift: {x: 0, y: 9.8, z: 0}
   rb: {fileID: 0}
   viscosity: 1
   drag: 1.5
