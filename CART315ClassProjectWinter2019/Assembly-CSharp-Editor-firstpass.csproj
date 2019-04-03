@@ -329,6 +329,24 @@
  <Reference Include="UnityEditor.Purchasing">
  <HintPath>/Users/Marie-Eve/Desktop/CART315class_project_w2019/CART315ClassProjectWinter2019/Library/PackageCache/com.unity.purchasing@2.0.3/Editor/UnityEditor.Purchasing.dll</HintPath>
  </Reference>
+ <Reference Include="ProBuilderEditor-Unity5">
+ <HintPath>/Users/Marie-Eve/Desktop/CART315class_project_w2019/CART315ClassProjectWinter2019/Assets/SampleScenes/ProBuilder/Editor/ProBuilderEditor-Unity5.dll</HintPath>
+ </Reference>
+ <Reference Include="Poly2Tri">
+ <HintPath>/Users/Marie-Eve/Desktop/CART315class_project_w2019/CART315ClassProjectWinter2019/Assets/SampleScenes/ProBuilder/Classes/ClassesLib/Poly2Tri.dll</HintPath>
+ </Reference>
+ <Reference Include="KdTreeLib">
+ <HintPath>/Users/Marie-Eve/Desktop/CART315class_project_w2019/CART315ClassProjectWinter2019/Assets/SampleScenes/ProBuilder/Classes/ClassesLib/KdTreeLib.dll</HintPath>
+ </Reference>
+ <Reference Include="pb_Stl">
+ <HintPath>/Users/Marie-Eve/Desktop/CART315class_project_w2019/CART315ClassProjectWinter2019/Assets/SampleScenes/ProBuilder/Classes/ClassesLib/pb_Stl.dll</HintPath>
+ </Reference>
+ <Reference Include="ProBuilderCore-Unity5">
+ <HintPath>/Users/Marie-Eve/Desktop/CART315class_project_w2019/CART315ClassProjectWinter2019/Assets/SampleScenes/ProBuilder/Classes/ProBuilderCore-Unity5.dll</HintPath>
+ </Reference>
+ <Reference Include="ProBuilderMeshOps-Unity5">
+ <HintPath>/Users/Marie-Eve/Desktop/CART315class_project_w2019/CART315ClassProjectWinter2019/Assets/SampleScenes/ProBuilder/Classes/ProBuilderMeshOps-Unity5.dll</HintPath>
+ </Reference>
  <Reference Include="mscorlib">
  <HintPath>/Applications/Unity/Unity.app/Contents/MonoBleedingEdge/lib/mono/4.7.1-api/mscorlib.dll</HintPath>
  </Reference>

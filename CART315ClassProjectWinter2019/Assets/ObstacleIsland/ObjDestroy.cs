@@ -7,26 +7,26 @@ public class ObjDestroy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-     StartCoroutine(CountDown());   
+     StartCoroutine(CountDown());
     }
 
     // Update is called once per frame
     void Update()
     {
-        
-        //Destroy(this.gameObject);   
+
+        //Destroy(this.gameObject);
     }
-    
+
 //        private void OnCollisionEnter(Collision collider)
-//    {      
+//    {
 ////               if(collider.gameObject.tag == "Shield") {
-//            Destroy(this.gameObject);   
+//            Destroy(this.gameObject);
 //              // }
 //     }
-    
+
     private IEnumerator CountDown() {
-        
+
         yield return new WaitForSeconds(2.0f);
-        Destroy(this.gameObject); 
+        Destroy(this.gameObject);
     }
 }

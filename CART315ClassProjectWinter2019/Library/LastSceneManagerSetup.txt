@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/DinerIsland.unity
+- path: Assets/ObstacleIsland/testScene.unity
   isLoaded: 1
   isActive: 1

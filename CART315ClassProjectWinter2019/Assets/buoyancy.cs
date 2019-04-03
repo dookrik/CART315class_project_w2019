@@ -47,33 +47,33 @@ public class buoyancy : MonoBehaviour
         if (transform.position.y < waterPosition.y) isSubmerged = true;
 
        collider.center = defaultCenter;
-        int n = 0;
-        firstWorldPoint = transform.TransformPoint(firstLocalPoint);
-        secondWorldPoint = transform.TransformPoint(secondLocalPoint);
-        thirdLocalPoint = transform.TransformPoint(thirdLocalPoint);
-        fourthLocalPoint = transform.TransformPoint(fourthLocalPoint);
+        //int n = 0;
+        //firstWorldPoint = transform.TransformPoint(firstLocalPoint);
+        //secondWorldPoint = transform.TransformPoint(secondLocalPoint);
+        //thirdLocalPoint = transform.TransformPoint(thirdLocalPoint);
+        //fourthLocalPoint = transform.TransformPoint(fourthLocalPoint);
 
-        if (firstWorldPoint.y <= waterPosition.y)
-        {
-           collider.center += firstLocalPoint;
-            n++;
-        }
-        if (secondWorldPoint.y <= waterPosition.y)
-        {
-            collider.center += secondLocalPoint;
-            n++;
-        }
-        if (thirdWorldPoint.y <= waterPosition.y)
-        {
-           collider.center += thirdLocalPoint;
-            n++;
-        }
-        if (fourthWorldPoint.y <= waterPosition.y)
-        {
-            collider.center += fourthLocalPoint;
-            n++;
-        }
-       collider.center = collider.center / n;
+        //if (firstWorldPoint.y <= waterPosition.y)
+        //{
+        //   collider.center += firstLocalPoint;
+        //    n++;
+        //}
+        //if (secondWorldPoint.y <= waterPosition.y)
+        //{
+        //    collider.center += secondLocalPoint;
+        //    n++;
+        //}
+        //if (thirdWorldPoint.y <= waterPosition.y)
+        //{
+        //   collider.center += thirdLocalPoint;
+        //    n++;
+        //}
+        //if (fourthWorldPoint.y <= waterPosition.y)
+        //{
+        //    collider.center += fourthLocalPoint;
+        //    n++;
+        //}
+       //collider.center = collider.center / n;
         print(isSubmerged);
         if (isSubmerged)
         {
@@ -85,6 +85,7 @@ public class buoyancy : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        print("collision");
         if (other.gameObject.layer == LayerMask.NameToLayer("Water"))
         {
             isSubmerged = true;
