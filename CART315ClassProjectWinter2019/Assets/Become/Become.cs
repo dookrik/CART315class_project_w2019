@@ -126,7 +126,7 @@ public class Become : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.P))
         {
             //call pickup function
-            actionPickup = GetComponentInParent<Pickupper2>();
+            actionPickup = GetComponentInParent<Pickupper>();
             actionPickup.PickUp();
             
         }
