@@ -75,7 +75,6 @@
      <Compile Include="Assets\EnemyBehaviour\EnemyChase.cs" />
      <Compile Include="Assets\EnemyBehaviour\EnemyPatrol.cs" />
      <Compile Include="Assets\EnemyBehaviour\EnemyRepel.cs" />
-     <Compile Include="Assets\EnemyThrow.cs" />
      <Compile Include="Assets\floatability.cs" />
      <Compile Include="Assets\flockingscript\BoidController.cs" />
      <Compile Include="Assets\flockingscript\BoidWatcher.cs" />
@@ -84,9 +83,11 @@
      <Compile Include="Assets\keyopen\KeyOpen.cs" />
      <Compile Include="Assets\keyopen\KeyOpenController.cs" />
      <Compile Include="Assets\NavMeshController.cs" />
+     <Compile Include="Assets\ObstacleIsland\EnemyThrow.cs" />
+     <Compile Include="Assets\ObstacleIsland\ObjDestroy.cs" />
+     <Compile Include="Assets\ObstacleIsland\Protect.cs" />
      <Compile Include="Assets\Pickupper.cs" />
      <Compile Include="Assets\Projectile.cs" />
-     <Compile Include="Assets\Protect.cs" />
      <Compile Include="Assets\Resources\ParticleSystem\DestroyByTimer.cs" />
      <Compile Include="Assets\RigidBodyController.cs" />
      <Compile Include="Assets\Spawner.cs" />
