@@ -15,7 +15,6 @@ public class EnemyThrow : MonoBehaviour
     
     public Transform throwPoint;
     private GameObject clonedObj;
-    private Collider colPlayer, colObj;
     
     public float maxForce = 10;
     public float throwDistance = 10;
@@ -30,7 +29,6 @@ public class EnemyThrow : MonoBehaviour
         throwSound = GetComponent<AudioSource>();
         //heldObj = 
         InvokeRepeating ("throwObj", 1, 1);
-        colPlayer = player.GetComponent<Collider>();
     }
 
     // Update is called once per frame
@@ -44,9 +42,7 @@ public class EnemyThrow : MonoBehaviour
     
     private void throwObj() {
         clonedObj = Instantiate(objPrefab, throwPoint.transform.position, throwPoint.transform.rotation);
-        
-        colObj = clonedObj.GetComponent<Collider>();
-        
+
         float distance = Vector3.Distance(transform.position, target.position);
         
         Vector3 heading = target.position - transform.position;
@@ -59,8 +55,6 @@ public class EnemyThrow : MonoBehaviour
             throwRb.AddForce(vel, ForceMode.VelocityChange);
             throwSound.Play();
         
-              if (colPlayer.bounds.Intersects(colObj.bounds))
-        Destroy(clonedObj);
 
     }
 

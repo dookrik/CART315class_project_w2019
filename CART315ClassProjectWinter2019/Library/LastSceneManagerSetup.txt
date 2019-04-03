@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/MarieEve_Audrey_TestScene.unity
+- path: Assets/Combust/Combust.unity
   isLoaded: 1
   isActive: 1
