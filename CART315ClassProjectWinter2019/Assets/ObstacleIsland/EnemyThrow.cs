@@ -26,9 +26,9 @@ public class EnemyThrow : MonoBehaviour
         //npcthrow = GetComponent<Throw>();
         player = GameObject.FindGameObjectWithTag("ActivePlayer");
         target = player.transform;
-        throwSound = GetComponent<AudioSource>();
-        //heldObj = 
         InvokeRepeating ("throwObj", 1, 1);
+        //throwSound = GetComponent<AudioSource>();
+    
     }
 
     // Update is called once per frame
@@ -41,6 +41,7 @@ public class EnemyThrow : MonoBehaviour
     }
     
     private void throwObj() {
+
         clonedObj = Instantiate(objPrefab, throwPoint.transform.position, throwPoint.transform.rotation);
 
         float distance = Vector3.Distance(transform.position, target.position);
@@ -53,7 +54,7 @@ public class EnemyThrow : MonoBehaviour
             //pickupper.ButtonCheck();
             var vel = Projectile.GetProjectileVelocity(maxForce, distance, transform.up, direction);
             throwRb.AddForce(vel, ForceMode.VelocityChange);
-            throwSound.Play();
+            //throwSound.Play();
         
 
     }
