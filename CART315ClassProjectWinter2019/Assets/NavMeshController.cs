@@ -49,7 +49,6 @@ public class NavMeshController : MonoBehaviour
 
         if (Vector3.Distance(this.transform.position, destination) > 0.1f)
             locomotionCtl.Locomote(Vector3.Normalize(agent.steeringTarget - this.transform.position));
-
     }
 
 
