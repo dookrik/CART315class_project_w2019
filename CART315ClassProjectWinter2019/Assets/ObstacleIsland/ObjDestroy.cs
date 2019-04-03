@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -15,4 +15,11 @@ public class ObjDestroy : MonoBehaviour
     {
         
     }
+    
+        private void OnCollisionEnter(Collision collider)
+    {      
+              print("collision");
+                Destroy(this);   
+               
+     }
 }
