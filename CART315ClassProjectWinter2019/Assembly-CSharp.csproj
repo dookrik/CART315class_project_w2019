@@ -63,13 +63,14 @@
     <Compile Include="Assets\Animations\Anima.cs" />
     <Compile Include="Assets\Become\Become.cs" />
     <Compile Include="Assets\Behavior script\BehaviourScript.cs" />
-    <Compile Include="Assets\behaviourTreeTest\EnemyBehaviour.cs" />
     <Compile Include="Assets\Break\Break.cs" />
     <Compile Include="Assets\Break\BreakInTriangles.cs" />
     <Compile Include="Assets\Break\Destructible.cs" />
     <Compile Include="Assets\BubbleIslandTeam\scripts\BubbleEntrance.cs" />
     <Compile Include="Assets\BubbleIslandTeam\scripts\BubbleVehicle.cs" />
+    <Compile Include="Assets\BubbleIslandTeam\scripts\DuckDetection.cs" />
     <Compile Include="Assets\BubbleIslandTeam\scripts\SetRenderQueue.cs" />
+    <Compile Include="Assets\buoyancy.cs" />
     <Compile Include="Assets\Combust\Combust.cs" />
     <Compile Include="Assets\Combust\NewBehaviourScript.cs" />
     <Compile Include="Assets\disableIfFarAway.cs" />
@@ -78,6 +79,10 @@
     <Compile Include="Assets\Eat\Eatable.cs" />
     <Compile Include="Assets\Eat\Health.cs" />
     <Compile Include="Assets\Eat\Pickupper2.cs" />
+    <Compile Include="Assets\EnemyBehaviour\EnemyBehaviour.cs" />
+    <Compile Include="Assets\EnemyBehaviour\EnemyChase.cs" />
+    <Compile Include="Assets\EnemyBehaviour\EnemyPatrol.cs" />
+    <Compile Include="Assets\EnemyBehaviour\EnemyRepel.cs" />
     <Compile Include="Assets\floatability.cs" />
     <Compile Include="Assets\flockingscript\BoidController.cs" />
     <Compile Include="Assets\flockingscript\BoidWatcher.cs" />
@@ -86,13 +91,10 @@
     <Compile Include="Assets\keyopen\KeyOpen.cs" />
     <Compile Include="Assets\keyopen\KeyOpenController.cs" />
     <Compile Include="Assets\NavMeshController.cs" />
+    <Compile Include="Assets\ObstacleIsland\EnemyThrow.cs" />
+    <Compile Include="Assets\ObstacleIsland\ObjDestroy.cs" />
+    <Compile Include="Assets\ObstacleIsland\Protect.cs" />
     <Compile Include="Assets\Pickupper.cs" />
-    <Compile Include="Assets\ProCore\ProBuilder\API Examples\Icosphere FFT\Scripts\CameraControls.cs" />
-    <Compile Include="Assets\ProCore\ProBuilder\API Examples\Icosphere FFT\Scripts\IcoBumpin.cs" />
-    <Compile Include="Assets\ProCore\ProBuilder\API Examples\Misc\HueCube.cs" />
-    <Compile Include="Assets\ProCore\ProBuilder\API Examples\Procedural Mesh\ExtrudeRandomEdges.cs" />
-    <Compile Include="Assets\ProCore\ProBuilder\API Examples\Runtime Editing\RuntimeEdit.cs" />
-    <Compile Include="Assets\ProCore\ProBuilder\API Examples\Vertex Colors\HighlightNearestFace.cs" />
     <Compile Include="Assets\Projectile.cs" />
     <Compile Include="Assets\RangeOpt\disableIfFarAway.cs" />
     <Compile Include="Assets\RangeOpt\DisableIfFarAwayV2.cs" />
@@ -103,6 +105,12 @@
     <Compile Include="Assets\SampleScenes\Menu\Scripts\MenuSceneLoader.cs" />
     <Compile Include="Assets\SampleScenes\Menu\Scripts\PauseMenu.cs" />
     <Compile Include="Assets\SampleScenes\Menu\Scripts\SceneAndURLLoader.cs" />
+    <Compile Include="Assets\SampleScenes\ProBuilder\API Examples\Icosphere FFT\Scripts\CameraControls.cs" />
+    <Compile Include="Assets\SampleScenes\ProBuilder\API Examples\Icosphere FFT\Scripts\IcoBumpin.cs" />
+    <Compile Include="Assets\SampleScenes\ProBuilder\API Examples\Misc\HueCube.cs" />
+    <Compile Include="Assets\SampleScenes\ProBuilder\API Examples\Procedural Mesh\ExtrudeRandomEdges.cs" />
+    <Compile Include="Assets\SampleScenes\ProBuilder\API Examples\Runtime Editing\RuntimeEdit.cs" />
+    <Compile Include="Assets\SampleScenes\ProBuilder\API Examples\Vertex Colors\HighlightNearestFace.cs" />
     <Compile Include="Assets\SampleScenes\Scripts\CameraSwitch.cs" />
     <Compile Include="Assets\SampleScenes\Scripts\LevelReset.cs" />
     <Compile Include="Assets\SampleScenes\Scripts\ParticleSceneControls.cs" />
@@ -343,21 +351,6 @@
     <Reference Include="UnityEngine.SpatialTracking">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2018.3.3f1/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/UnityEngine.SpatialTracking.dll</HintPath>
     </Reference>
-    <Reference Include="ProBuilderCore-Unity5">
-      <HintPath>D:/Documents/GitHub/CART315class_project_w2019/CART315ClassProjectWinter2019/Assets/ProCore/ProBuilder/Classes/ProBuilderCore-Unity5.dll</HintPath>
-    </Reference>
-    <Reference Include="ProBuilderMeshOps-Unity5">
-      <HintPath>D:/Documents/GitHub/CART315class_project_w2019/CART315ClassProjectWinter2019/Assets/ProCore/ProBuilder/Classes/ProBuilderMeshOps-Unity5.dll</HintPath>
-    </Reference>
-    <Reference Include="KdTreeLib">
-      <HintPath>D:/Documents/GitHub/CART315class_project_w2019/CART315ClassProjectWinter2019/Assets/ProCore/ProBuilder/Classes/ClassesLib/KdTreeLib.dll</HintPath>
-    </Reference>
-    <Reference Include="pb_Stl">
-      <HintPath>D:/Documents/GitHub/CART315class_project_w2019/CART315ClassProjectWinter2019/Assets/ProCore/ProBuilder/Classes/ClassesLib/pb_Stl.dll</HintPath>
-    </Reference>
-    <Reference Include="Poly2Tri">
-      <HintPath>D:/Documents/GitHub/CART315class_project_w2019/CART315ClassProjectWinter2019/Assets/ProCore/ProBuilder/Classes/ClassesLib/Poly2Tri.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.Analytics.Editor">
       <HintPath>D:/Documents/GitHub/CART315class_project_w2019/CART315ClassProjectWinter2019/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Editor.dll</HintPath>
     </Reference>
@@ -366,6 +359,21 @@
     </Reference>
     <Reference Include="Unity.Analytics.Tracker">
       <HintPath>D:/Documents/GitHub/CART315class_project_w2019/CART315ClassProjectWinter2019/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Tracker.dll</HintPath>
+    </Reference>
+    <Reference Include="Poly2Tri">
+      <HintPath>D:/Documents/GitHub/CART315class_project_w2019/CART315ClassProjectWinter2019/Assets/SampleScenes/ProBuilder/Classes/ClassesLib/Poly2Tri.dll</HintPath>
+    </Reference>
+    <Reference Include="KdTreeLib">
+      <HintPath>D:/Documents/GitHub/CART315class_project_w2019/CART315ClassProjectWinter2019/Assets/SampleScenes/ProBuilder/Classes/ClassesLib/KdTreeLib.dll</HintPath>
+    </Reference>
+    <Reference Include="pb_Stl">
+      <HintPath>D:/Documents/GitHub/CART315class_project_w2019/CART315ClassProjectWinter2019/Assets/SampleScenes/ProBuilder/Classes/ClassesLib/pb_Stl.dll</HintPath>
+    </Reference>
+    <Reference Include="ProBuilderCore-Unity5">
+      <HintPath>D:/Documents/GitHub/CART315class_project_w2019/CART315ClassProjectWinter2019/Assets/SampleScenes/ProBuilder/Classes/ProBuilderCore-Unity5.dll</HintPath>
+    </Reference>
+    <Reference Include="ProBuilderMeshOps-Unity5">
+      <HintPath>D:/Documents/GitHub/CART315class_project_w2019/CART315ClassProjectWinter2019/Assets/SampleScenes/ProBuilder/Classes/ProBuilderMeshOps-Unity5.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2018.3.3f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/mscorlib.dll</HintPath>
