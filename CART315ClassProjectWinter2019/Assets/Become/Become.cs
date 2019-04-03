@@ -24,7 +24,13 @@ public class Become : MonoBehaviour
     private Pickupper actionPickup;
     private Eat actionEat;
     private Throw actionThrow;
-
+    
+    // Shield for Marie-Eve and Audrey
+    private GameObject shield;
+    private MeshRenderer render;
+    private Collider collider;
+    private bool shieldActivated;
+    
 
     void Start()
     {
@@ -38,10 +44,22 @@ public class Become : MonoBehaviour
         
         //setting the audio sound component
         setAudioSource();
+        
+    // Shield for Marie-Eve and Audrey
+    shield = GameObject.FindWithTag("Shield");
+    render = shield.GetComponent<MeshRenderer>();
+    collider = shield.GetComponent<Collider>();
+    shieldActivated = false;
+        
     }
     //we want to update every frame
     void Update()
     {
+        // Shield for Marie-Eve and Audrey
+        if (render.enabled == true && collider.enabled == true)
+        shieldActivated = true;
+        else shieldActivated = false;
+        
         PlayerActions();
 
         //turn the camera towards the clicked object and make sure it's a player
@@ -125,6 +143,21 @@ public class Become : MonoBehaviour
             {
                 actionThrow.ThrowObject();
             }
+        }
+        // KeyCode for Marie-Eve and Audrey's milestone      
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            //call shield
+            print(shieldActivated);
+            
+            if (!shieldActivated){
+            render.enabled = true;
+            collider.enabled = true;
+            } else {
+            render.enabled = false;
+            collider.enabled = false; 
+            }
+
         }
         //... more actions
     }

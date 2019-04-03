@@ -6,6 +6,7 @@ public class DisableIfFarAwayV2 : MonoBehaviour
 {
     private GameObject itemActivatorObject;
     private ItemActivatorV2 activationScript;
+    public float distanceToDisable = 10;
 
     // --------------------------------------------------
 
@@ -25,3 +26,9 @@ public class DisableIfFarAwayV2 : MonoBehaviour
         activationScript.addList.Add(new ActivatorItem { item = this.gameObject });
     }
 }
+
+//HOW TO USE 
+//Place onto every object in the scene, manipulate the distance to what you feel
+//The render distance should be.
+
+//CREDIT TO: https://www.youtube.com/watch?v=tAbEvzZVz5E&feature=youtu.be for helping us with base code

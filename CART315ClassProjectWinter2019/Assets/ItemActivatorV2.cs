@@ -10,7 +10,7 @@ public class ItemActivatorV2 : MonoBehaviour
 
     [SerializeField]
     
-    private int distanceFromPlayer;
+    //private int distanceFromPlayer;
 
     private GameObject player;
     //List, like arrays but more flexible, self sorting and easy to add and remove
@@ -71,7 +71,7 @@ public class ItemActivatorV2 : MonoBehaviour
             {
 
                 // IF DISTANCE IS BIGGER THAN " DISTANCEFROMPLAYER" MAKE THE OBJECT INVISIBLE
-                if ((Vector3.Distance(player.transform.position, item.item.transform.position) > distanceFromPlayer)&& item.item.tag.Equals("Small"))
+                if ((Vector3.Distance(player.transform.position, item.item.transform.position) > item.item.GetComponent<DisableIfFarAwayV2>().distanceToDisable))
                         {
                     // if something has happened to that object since the last time we checked the list
 
@@ -94,7 +94,7 @@ public class ItemActivatorV2 : MonoBehaviour
                            }
                                
                         }
-               else if ((Vector3.Distance(player.transform.position, item.item.transform.position) > distanceFromPlayer+20) && item.item.tag.Equals("Medium"))
+              /* else if ((Vector3.Distance(player.transform.position, item.item.transform.position) > distanceFromPlayer+20) && item.item.tag.Equals("Medium"))
                 {
 
                     if (item.item == null)
@@ -131,7 +131,7 @@ public class ItemActivatorV2 : MonoBehaviour
                     }
 
                 }
-
+                */
 
                 // MAKE IT VISIBLE
                 else
@@ -177,4 +177,8 @@ public class ActivatorItemV2
 {
     public GameObject item;
 }
+
+
+//HOW TO USE 
+//Place on an empty object in scene, thats it
 

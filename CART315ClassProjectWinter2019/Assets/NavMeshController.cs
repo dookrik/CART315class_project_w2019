@@ -21,7 +21,7 @@ public class NavMeshController : MonoBehaviour
     private NavMeshAgent agent;
     // public LocomotionController locomotionCtl;
     private RigidBodyController locomotionCtl;
-    private Rigidbody rigidb;
+    //private Rigidbody rigidb;
     Vector3 direction;
 
     private Vector3 destination;
@@ -30,7 +30,7 @@ public class NavMeshController : MonoBehaviour
     {
         agent = this.GetComponent<NavMeshAgent>();
         locomotionCtl = GetComponent<RigidBodyController>();
-        rigidb = GetComponent<Rigidbody>();
+        //rigidb = GetComponent<Rigidbody>();
         agent.Warp(this.transform.position);
        //agent.SetDestination(agent.transform.position);
         destination = agent.transform.position;
@@ -41,21 +41,14 @@ public class NavMeshController : MonoBehaviour
      by now, it is not calling locomote function in order to make movement going the right way. 
    */
 
-    public  void NavMeshProvider(Vector3 destination)
+    public void NavMeshProvider(Vector3 destination)
     {
-        //agent.velocity = rigidb.velocity;
+        //agent.velocity = new Vector3(0,0,0);
 
         agent.SetDestination(destination);
 
-
-//        this.transform.position += Vector3.Normalize(agent.steeringTarget - this.transform.position) * 0.1f;
-
-//        if (Vector3.Distance(this.transform.position, destination) > 0.1f)
-//            locomotionCtl.Locomote(Vector3.Normalize(agent.steeringTarget - this.transform.position));
-
-        //if (Vector3.Distance(this.transform.position, destination) > 0.1f)
-        //    locomotionCtl.Locomote(Vector3.Normalize(agent.steeringTarget - this.transform.position));
-
+        if (Vector3.Distance(this.transform.position, destination) > 0.1f)
+            locomotionCtl.Locomote(Vector3.Normalize(agent.steeringTarget - this.transform.position));
     }
 
 
@@ -69,45 +62,45 @@ public class NavMeshController : MonoBehaviour
     */
 
 
-    void FixedUpdate()
-    {
-        agent.velocity = rigidb.velocity;
-
-
-        if (Input.GetMouseButtonDown(0)) {
-
-            Ray ray = cam.ScreenPointToRay(Input.mousePosition);
-
-            RaycastHit hit;
-
-            if (Physics.Raycast(ray, out hit))
-            {
-                agent.SetDestination(hit.point);
-                destination = hit.point;
-
-            }
-        }
-
-        //if (Input.GetMouseButtonDown(0)) {
-
-        //    Ray ray = cam.ScreenPointToRay(Input.mousePosition);
-
-        //    RaycastHit hit;
-
-        //    if (Physics.Raycast(ray, out hit))
-        //    {
-        //        agent.SetDestination(hit.point);
-        //        destination = hit.point;
-
-        //    }
-        //}
-
-        if (Vector3.Distance(this.transform.position, destination) > 0.1f)
-       locomotionCtl.Locomote(Vector3.Normalize(agent.steeringTarget - this.transform.position));
-
-     //  this.transform.position += Vector3.Normalize(agent.steeringTarget - this.transform.position) * 0.1f;
-       
-    }
+//    void FixedUpdate()
+//    {
+//        agent.velocity = rigidb.velocity;
+//
+//
+//        if (Input.GetMouseButtonDown(0)) {
+//
+//            Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+//
+//            RaycastHit hit;
+//
+//            if (Physics.Raycast(ray, out hit))
+//            {
+//                agent.SetDestination(hit.point);
+//                destination = hit.point;
+//
+//            }
+//        }
+//
+//        //if (Input.GetMouseButtonDown(0)) {
+//
+//        //    Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+//
+//        //    RaycastHit hit;
+//
+//        //    if (Physics.Raycast(ray, out hit))
+//        //    {
+//        //        agent.SetDestination(hit.point);
+//        //        destination = hit.point;
+//
+//        //    }
+//        //}
+//
+//        if (Vector3.Distance(this.transform.position, destination) > 0.1f)
+//       locomotionCtl.Locomote(Vector3.Normalize(agent.steeringTarget - this.transform.position));
+//
+//     //  this.transform.position += Vector3.Normalize(agent.steeringTarget - this.transform.position) * 0.1f;
+//       
+//    }
 
 }
 
