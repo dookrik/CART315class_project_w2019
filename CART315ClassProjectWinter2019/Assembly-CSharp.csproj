@@ -62,6 +62,7 @@
      <Compile Include="Assets\BubbleIslandTeam\scripts\BubbleEntrance.cs" />
      <Compile Include="Assets\BubbleIslandTeam\scripts\BubbleVehicle.cs" />
      <Compile Include="Assets\BubbleIslandTeam\scripts\SetRenderQueue.cs" />
+     <Compile Include="Assets\buoyancy.cs" />
      <Compile Include="Assets\Combust\Combust.cs" />
      <Compile Include="Assets\Combust\NewBehaviourScript.cs" />
      <Compile Include="Assets\disableIfFarAway.cs" />
@@ -85,6 +86,7 @@
      <Compile Include="Assets\NavMeshController.cs" />
      <Compile Include="Assets\Pickupper.cs" />
      <Compile Include="Assets\Projectile.cs" />
+     <Compile Include="Assets\Protect.cs" />
      <Compile Include="Assets\Resources\ParticleSystem\DestroyByTimer.cs" />
      <Compile Include="Assets\RigidBodyController.cs" />
      <Compile Include="Assets\Spawner.cs" />
