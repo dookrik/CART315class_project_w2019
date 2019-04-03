@@ -61,6 +61,7 @@
      <Compile Include="Assets\Break\Destructible.cs" />
      <Compile Include="Assets\BubbleIslandTeam\scripts\BubbleEntrance.cs" />
      <Compile Include="Assets\BubbleIslandTeam\scripts\BubbleVehicle.cs" />
+     <Compile Include="Assets\BubbleIslandTeam\scripts\DuckDetection.cs" />
      <Compile Include="Assets\BubbleIslandTeam\scripts\SetRenderQueue.cs" />
      <Compile Include="Assets\buoyancy.cs" />
      <Compile Include="Assets\Combust\Combust.cs" />
