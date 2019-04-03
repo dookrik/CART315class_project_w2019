@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/RangeOpt/RangeV2.unity
+- path: Assets/Combust/Combust.unity
   isLoaded: 1
   isActive: 1
