@@ -16,9 +16,6 @@
           <e p="BehaviourScript.cs" t="Include" />
           <e p="PseudoCode.txt" t="Include" />
         </e>
-        <e p="behaviourTreeTest" t="Include">
-          <e p="EnemyBehaviour.cs" t="Include" />
-        </e>
         <e p="Break" t="Include">
           <e p="Break.cs" t="Include" />
           <e p="BreakInTriangles.cs" t="Include" />
@@ -27,13 +24,21 @@
         <e p="BubbleIslandTeam" t="Include">
           <e p="Scripts" t="Include">
             <e p="BubbleEntrance.cs" t="Include" />
+            <e p="BubbleVehicle.cs" t="Include" />
+            <e p="DuckDetection.cs" t="Include" />
+            <e p="ParticleDecalData.cs" t="Include" />
+            <e p="ParticleDecalPool.cs" t="Include" />
+            <e p="ParticleLauncher.cs" t="Include" />
             <e p="SetRenderQueue.cs" t="Include" />
+            <e p="SplatOnCollision.cs" t="Include" />
+            <e p="Watergun.cs" t="Include" />
           </e>
           <e p="Shaders" t="Include">
             <e p="Bubble.shader" t="Include" />
             <e p="DepthMask.shader" t="Include" />
           </e>
         </e>
+        <e p="buoyancy.cs" t="Include" />
         <e p="Combust" t="Include">
           <e p="Combust.cs" t="Include" />
           <e p="NewBehaviourScript.cs" t="Include" />
@@ -46,6 +51,13 @@
           <e p="Health.cs" t="Include" />
           <e p="Pickupper2.cs" t="Include" />
         </e>
+        <e p="EnemyBehaviour" t="Include">
+          <e p="EnemyBehaviour.cs" t="Include" />
+          <e p="EnemyChase.cs" t="Include" />
+          <e p="EnemyPatrol.cs" t="Include" />
+          <e p="EnemyRepel.cs" t="Include" />
+        </e>
+        <e p="EnemyThrow.cs" t="Include" />
         <e p="floatability.cs" t="Include" />
         <e p="flockingscript" t="Include">
           <e p="BoidController.cs" t="Include" />
@@ -124,6 +136,7 @@
         <e p="NavMeshController.cs" t="Include" />
         <e p="Pickupper.cs" t="Include" />
         <e p="Projectile.cs" t="Include" />
+        <e p="Protect.cs" t="Include" />
         <e p="Resources" t="Include">
           <e p="ParticleSystem" t="Include">
             <e p="DestroyByTimer.cs" t="Include" />
