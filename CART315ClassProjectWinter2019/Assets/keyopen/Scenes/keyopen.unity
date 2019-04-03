@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657868, g: 0.49641263, b: 0.57481706, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657868, g: 0.49641263, b: 0.5748171, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -165,7 +165,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 0f6599150ea0b4dd68f07882a232d866, type: 2}
+  - {fileID: 2100000, guid: 63ef3994429e94affa06ae648788833a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -806,13 +806,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b854f67e107f4400bcaff0d178ba6c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxDistance: 2
-  audioClip: {fileID: 0}
-  doAfterBeingUsed:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
 --- !u!135 &532136359
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -843,7 +836,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 9ebfda838b1074ce58257b89af4deaf6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -879,7 +872,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 532136357}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.79563975, y: 2.9512763, z: 4.3375587}
+  m_LocalPosition: {x: 0.79563975, y: 0.65, z: 1.96}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1285,23 +1278,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1138361284}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e1397e3b000d1406885f85715482ed34, type: 3}
+  m_Script: {fileID: 11500000, guid: 51f0cd0d0b56c4bb599d8355aefe7fe4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shouldBeDestroyedAfterUse: 0
   OnItemUsed:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1138361290}
-        m_MethodName: set_enabled
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
+      m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!1 &1428080443
@@ -1354,7 +1337,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 53cf411d32bc44baf9ae635e680fc085, type: 2}
+  - {fileID: 2100000, guid: 30c519cd3f59b4edca8e904a8b52ec14, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1473,7 +1456,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-35506
+  m_Name: pb_Mesh17806
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -1633,7 +1616,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-35270
+  m_Name: pb_Mesh17838
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
