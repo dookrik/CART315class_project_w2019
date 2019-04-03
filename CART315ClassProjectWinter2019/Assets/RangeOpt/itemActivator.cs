@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class itemActivator : MonoBehaviour
 {
+    //DO NOT USE THIS SCRIPT
 
     [SerializeField]
     private int distanceFromPlayer;

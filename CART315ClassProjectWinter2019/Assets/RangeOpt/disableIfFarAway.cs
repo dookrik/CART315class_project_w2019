@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class disableIfFarAway : MonoBehaviour
 {
+    //DO NOT USE THIS SCRIPT
     private GameObject itemActivatorObject;
     private itemActivator activationScript;
 
