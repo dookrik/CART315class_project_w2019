@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -33,6 +33,9 @@ public class Become : MonoBehaviour
         thirdCamPosition = firstCamPosition + new Vector3(0,5,-5);
         actionThrow = GetComponent<Throw>();
         
+        // set the current object to ActivePlayer
+        gameObject.transform.parent.tag = "ActivePlayer";
+        
         //setting the audio sound component
         setAudioSource();
     }
@@ -45,6 +48,7 @@ public class Become : MonoBehaviour
         if (hit.collider != null && hit.collider.gameObject.GetComponentInParent<RigidBodyController>() != null && hit.collider.gameObject.tag == "Player")
         {
             Vector3 direction = hit.collider.gameObject.transform.position - transform.position;
+        
             if (direction != Vector3.zero)
             {
                 Quaternion endRotation = Quaternion.LookRotation(direction);
@@ -106,6 +110,7 @@ public class Become : MonoBehaviour
             //call pickup function
             actionPickup = GetComponentInParent<Pickupper>();
             actionPickup.PickUp();
+            
         }
         if (Input.GetKeyDown(KeyCode.E))
         {
@@ -175,6 +180,11 @@ public class Become : MonoBehaviour
         //instantiate a new camera at the position of the object that was clicked on
         Become clickedObject = Instantiate(this, hit.collider.gameObject.transform.position, Quaternion.identity);
         clickedObject.gameObject.name = "Camera_Become";
+    
+        //Set the new object to ActivePlayer tag
+        hit.collider.transform.gameObject.tag = "ActivePlayer";
+        //The other object loses its ActivePlayer tag
+        gameObject.transform.parent.tag = "Player";
 
         //make the camera a chid of the clicked game object and center its position relative to the player
         clickedObject.transform.SetParent(hit.collider.gameObject.transform);

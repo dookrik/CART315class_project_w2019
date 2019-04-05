@@ -16,7 +16,6 @@ public class Combust : Break
 {
 
     public float temperature;
-
     public ParticleSystem particles; // Reference to particle system
 
     // burn function describes basic behaviour of a burning object
@@ -58,7 +57,7 @@ public class Combust : Break
     // Combustible object gets on fire staying in contact with a burning object
     public void OnTriggerStay(Collider other)
     {
-            if (Vector3.Distance(other.transform.position, this.transform.position) < 50)
+            if (Vector3.Distance(other.transform.position, this.transform.position) < 50 && (other.gameObject.layer!= LayerMask.NameToLayer("Water")))
             {
                 burn();
             }
@@ -70,6 +69,7 @@ public class Combust : Break
     // temperature increases by 1 on each mouse click
     private void OnMouseDown()
     {
+        print("clicked");
         temperature += 1;
         if (temperature > 5)
         {

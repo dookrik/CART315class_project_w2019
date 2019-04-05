@@ -41,7 +41,37 @@ ModelImporter:
     4300006: gun_detail_3
     4300008: gun_detail_4
     4300010: gun_detail_5
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: gun_bodyMat
+    second: {fileID: 2100000, guid: 7cac4533e01eb4905918f0f3f0108e1a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: gun_detail_1Mat
+    second: {fileID: 2100000, guid: 6715be1d9cb044228b09c66bea581cb4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: gun_detail_2Mat
+    second: {fileID: 2100000, guid: 0088a14a77ab34622936703e99150356, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: gun_detail_3Mat
+    second: {fileID: 2100000, guid: aad39cbd59ed3470cb4fb052c1b7b19f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: gun_detail_4Mat
+    second: {fileID: 2100000, guid: 4cf9c32cdc29e4405aaedd0ca3a8f61a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: gun_detail_5Mat
+    second: {fileID: 2100000, guid: 441c0219b83664c45852cc800c5cc95f, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
