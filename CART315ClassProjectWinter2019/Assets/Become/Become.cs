@@ -20,7 +20,7 @@ public class Become : MonoBehaviour
     private AudioSource audioSource;
 
     //Action Scripts
-    //public Spawner actionSpawn;
+    public Spawner actionSpawn;
     private Pickupper actionPickup;
     private Eat actionEat;
     private Throw actionThrow;
@@ -32,9 +32,9 @@ public class Become : MonoBehaviour
         firstCamPosition = GetComponent<Transform>().localPosition;
         thirdCamPosition = firstCamPosition + new Vector3(0,5,-5);
         actionThrow = GetComponent<Throw>();
-        
-        //setting the audio sound component
-        setAudioSource();
+
+    //setting the audio sound component
+    setAudioSource();
     }
     //we want to update every frame
     void Update()
@@ -99,7 +99,15 @@ public class Become : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.I))
         {
-            //call spawn function
+            if (actionPickup && actionPickup.IsHoldingObject())
+            {
+                //check if the picked up item has a spawner script
+
+                actionSpawn = GetComponent<Spawner>();
+                //call spawn function
+                actionSpawn.Spawn();
+            }
+                
         }
         if (Input.GetKeyDown(KeyCode.P))
         {

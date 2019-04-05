@@ -4,6 +4,19 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
+    /***
+    SPAWNER SCRIPT INSTRUCTION
+    1 - Attach the script to an empty gameobject. If you attach the script to a gameobject or prefab; make sure the collision component is disabled. The objects spawn inside the script is attached.
+    2 - Set the size of desired gameobject(s) to be spawn.
+    3 - Drag and drop the prefab(s) or gameobject(s) in the Spawn Objects Slot(s) in the inspector.
+        note* object is randomly selected when it is spawned if the Spawning object pool is greater than one. 
+    4 - The particle effect and sound effect are pre-added and you can change them by dragging and dropping them in the inspector.
+        note* the particle effect is being instantiated when object is spawned. It does not use the stop and play method. 
+    5 - You can enable the spawnerIntervalEnable toogle to automatically spawns object.
+    6 - You can disable the spawn interval and the particle effect.
+    7 - You can change the z force thrust.
+
+    ***/
     //game object array
     public GameObject[] spawnObject;
     //scaler for the spawnObject
@@ -19,7 +32,7 @@ public class Spawner : MonoBehaviour
     //max spawner
     public int maxSpawn = 10;
     //enable the spawner interval
-    public bool spawnerIntervalEnable = true;
+    public bool spawnerIntervalEnable = false;
     //spawner interval by seconds
     public float spawnerInterval = 3f;
     //z force physic
@@ -94,6 +107,8 @@ public class Spawner : MonoBehaviour
 
         //modify the scale of the gameobject
         spawnObject[randomIndex].transform.localScale = new Vector3(objectScale, objectScale, objectScale);
+
+        //***change the position of spawning outside the model (gameobject)
 
         //create a temporary object holder for prefab cloning
         GameObject obj = Instantiate(spawnObject[randomIndex], transform.position, transform.rotation) as GameObject;
@@ -208,5 +223,10 @@ public class Spawner : MonoBehaviour
     public int GetRandomIndex()
     {
         return Random.Range(0, spawnObject.Length);
+    }
+
+    public void ActionSpawn()
+    {
+
     }
 }
