@@ -388,14 +388,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnObject:
-  - {fileID: 1524686260301490755, guid: 454c07d0461350b478434d050244eb76, type: 3}
-  - {fileID: 1020461199336118010, guid: ebbcd3efca31dca409c77076338a4d4c, type: 3}
+  - {fileID: 7517485633523856365, guid: ddf718ba044aae341ac99ff65bdecb10, type: 3}
+  - {fileID: 2229992844004779298, guid: 9428f9b59a3998741ab1bfe0620fe99c, type: 3}
   objectScale: 0.5
+  maxSpawn: 5
   particleEffect: {fileID: 0}
   particleEffectEnable: 1
   soundEffect: {fileID: 0}
   soundVolume: 1
-  maxSpawn: 5
   spawnerIntervalEnable: 1
   spawnerInterval: 3
   zForceThrust: 300

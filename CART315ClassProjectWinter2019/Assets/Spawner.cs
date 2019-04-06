@@ -6,21 +6,28 @@ public class Spawner : MonoBehaviour
 {
     /***
     SPAWNER SCRIPT INSTRUCTION
-    1 - Attach the script to an empty gameobject. If you attach the script to a gameobject or prefab; make sure the collision component is disabled. The objects spawn inside the script is attached.
-    2 - Set the size of desired gameobject(s) to be spawn.
+    1 - Attach the script to an empty gameobject. If you attach the script to a gameobject or prefab; make sure the collision component is disabled. The objects spawn inside the object.
+    2 - Set a size (click on Spawn object to see it) for Spawn Object. This will create an array to hold the game objects or prefabs. 
     3 - Drag and drop the prefab(s) or gameobject(s) in the Spawn Objects Slot(s) in the inspector.
-        note* object is randomly selected when it is spawned if the Spawning object pool is greater than one. 
-    4 - The particle effect and sound effect are pre-added and you can change them by dragging and dropping them in the inspector.
+        note* If you put more than one game object or prefab; the script will randomly select one of them to spawn. 
+        note* The game object or prefab needs a rigidbody.
+    4 - Set the object scale for your game objects or prefabs
+    5 - The particle effect is pre-added, and you can change it by dragging and dropping one in the inspector.
         note* the particle effect is being instantiated when object is spawned. It does not use the stop and play method. 
-    5 - You can enable the spawnerIntervalEnable toogle to automatically spawns object.
-    6 - You can disable the spawn interval and the particle effect.
-    7 - You can change the z force thrust.
+    6-  The sound effect is pre-added, and you can change it by dragging and dropping one in the inspector.
+         note* Sound Volume controls the intensity of the sound. 1 = Max and 0 = muted
+    7 - You can disable or enable the Spawner Interval Enable.
+        note* disable this if you want manual control, and call the spawn() function in your own script to spawn a object.  
+    8 - You can set the interval spawning time by second. Default interval time is set to 3 second.
+    9 - You can change the z force thrust in the inspector.
 
     ***/
     //game object array
     public GameObject[] spawnObject;
     //scaler for the spawnObject
     public float objectScale = 1f;
+    //max spawner
+    public int maxSpawn = 10;
     //particle effect
     public ParticleSystem particleEffect;
     //animation enable flag
@@ -29,10 +36,8 @@ public class Spawner : MonoBehaviour
     public AudioClip soundEffect;
     //volume amplitude | 1f is max volume it could have
     public float soundVolume = 1f;
-    //max spawner
-    public int maxSpawn = 10;
     //enable the spawner interval
-    public bool spawnerIntervalEnable = false;
+    public bool spawnerIntervalEnable = true;
     //spawner interval by seconds
     public float spawnerInterval = 3f;
     //z force physic
@@ -78,7 +83,7 @@ public class Spawner : MonoBehaviour
 
         if(soundEffect == null)
         {
-            //set a sound effect from the resources folder
+            soundEffect = Resources.Load<AudioClip>("Sounds/Explosion_spawn");
         }
 
 
