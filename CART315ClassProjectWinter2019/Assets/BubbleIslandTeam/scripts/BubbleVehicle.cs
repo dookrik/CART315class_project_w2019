@@ -24,28 +24,31 @@ public class BubbleVehicle : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (!(collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("Player")))
+        if (!(collision.gameObject.CompareTag("ActivePlayer")))
         {
-            print("pop bubble");
+            //print("pop bubble");
 
             foreach (Transform child in transform)
             {
-                if (child.tag == "Player")
+                if (child.tag == "ActivePlayer")
                 {
                     Children.Add(child.gameObject);
                     child.transform.parent = null;
                 }
             }
-            GameObject.Find("Camera_Become").transform.parent = Children[0].transform;
+            if (Children.Count != 0)
+            {
+                GameObject.Find("Camera_Become").transform.parent = Children[0].transform;
+            }
             Destroy(gameObject);
         }
     }
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "ActivePlayer")
         {
-            print("Inside bubble");
+            //print("Inside bubble");
             Cam.gameObject.transform.parent.parent = gameObject.transform;
             if(Cam.gameObject.GetComponent<Become>().GetCamMode() == 1)
             {
@@ -58,7 +61,7 @@ public class BubbleVehicle : MonoBehaviour
             Cam.gameObject.transform.parent = gameObject.transform;
             foreach (Transform child in transform)
             {
-                if (child.tag == "Player")
+                if (child.tag == "ActivePlayer")
                 {
                     child.transform.localPosition = new Vector3(0, child.transform.localPosition.y, 0);
                 }
