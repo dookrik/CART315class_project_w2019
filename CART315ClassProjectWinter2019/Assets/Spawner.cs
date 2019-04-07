@@ -113,10 +113,13 @@ public class Spawner : MonoBehaviour
         //modify the scale of the gameobject
         spawnObject[randomIndex].transform.localScale = new Vector3(objectScale, objectScale, objectScale);
 
+        
+
         //***change the position of spawning outside the model (gameobject)
+        Vector3 position = new Vector3(this.GetComponent<Transform>().position.x, this.GetComponent<Transform>().position.y, this.GetComponent<Transform>().position.z);
 
         //create a temporary object holder for prefab cloning
-        GameObject obj = Instantiate(spawnObject[randomIndex], transform.position, transform.rotation) as GameObject;
+        GameObject obj = Instantiate(spawnObject[randomIndex], position, transform.rotation) as GameObject;
         //add relative force when the prefab is instantiated.
         obj.GetComponent<Rigidbody>().AddRelativeForce(new Vector3(0, 0, zForceThrust));
 

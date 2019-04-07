@@ -1,74 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &5191775453879263862
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 9080643218992359573}
-  - component: {fileID: 6311950007461136065}
-  m_Layer: 0
-  m_Name: Point Light (1)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &9080643218992359573
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5191775453879263862}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.22629173, y: 0.22629173, z: 0.22629173}
-  m_Children: []
-  m_Father: {fileID: 6662406728276785809}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!108 &6311950007461136065
-Light:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5191775453879263862}
-  m_Enabled: 1
-  serializedVersion: 8
-  m_Type: 2
-  m_Color: {r: 0.24921845, g: 0.09019607, b: 1, a: 1}
-  m_Intensity: 36.6
-  m_Range: 5.2
-  m_SpotAngle: 30
-  m_CookieSize: 10
-  m_Shadows:
-    m_Type: 2
-    m_Resolution: -1
-    m_CustomResolution: -1
-    m_Strength: 0
-    m_Bias: 0.05
-    m_NormalBias: 0.4
-    m_NearPlane: 0.1
-  m_Cookie: {fileID: 0}
-  m_DrawHalo: 0
-  m_Flare: {fileID: 0}
-  m_RenderMode: 0
-  m_CullingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_Lightmapping: 4
-  m_LightShadowCasterMode: 0
-  m_AreaSize: {x: 1, y: 1}
-  m_BounceIntensity: 1
-  m_ColorTemperature: 6570
-  m_UseColorTemperature: 0
-  m_ShadowRadius: 0
-  m_ShadowAngle: 0
 --- !u!1 &6662406728276785822
 GameObject:
   m_ObjectHideFlags: 0
@@ -103,8 +34,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 3.03, y: 16.76, z: -102.89}
   m_LocalScale: {x: 4.4190745, y: 4.4190745, z: 4.4190745}
-  m_Children:
-  - {fileID: 9080643218992359573}
+  m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -133,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 474b50460b52c4ac0920998efda061b0, type: 2}
+  - {fileID: 2100000, guid: e3ebe9aee93880e4bbf86e8ff99eb453, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -162,10 +92,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 6662406728276785822}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff6c5d22f48ca41aca39156e386e7bbe, type: 3}
+  m_Script: {fileID: 11500000, guid: fb8d334e219124267af902fb35105881, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Children: []
+  m_queues: b70b0000
 --- !u!114 &6662406728276785812
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -175,12 +105,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 6662406728276785822}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fbe460bc44b0f489684f6fa8ab703538, type: 3}
+  m_Script: {fileID: 11500000, guid: 1f35cd06b71e44df6bf4d27ebbd6d98a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
-  jumpSpeed: 5
-  isGrounded: 0
+  Children: []
 --- !u!114 &6662406728276785815
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -190,10 +118,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 6662406728276785822}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f323062ab68e942a683dae3311fc9b54, type: 3}
+  m_Script: {fileID: 11500000, guid: 86ae51d1f6eb54ed192c8e41f3d6eca5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_queues: b80b0000
+  speed: 3
+  jumpSpeed: 0
+  isGrounded: 0
 --- !u!54 &6662406728276785814
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -208,7 +138,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 84
+  m_Constraints: 80
   m_CollisionDetection: 0
 --- !u!65 &6662406728276785801
 BoxCollider:
