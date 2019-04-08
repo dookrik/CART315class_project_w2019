@@ -7,7 +7,7 @@ public class KeyOpenController : MonoBehaviour
 
 
     //Must have the pickupper script attached to the object in order for it to work
-
+   // *! updated naming convention on Pickupper
     private Pickupper PickUp;
     // Start is called before the first frame update
     void Start()
